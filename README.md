@@ -14,6 +14,15 @@
 
 ## 2. 개발 환경 및 배포 URL
 ### 2.1 개발 환경
-
-- Web Framework
-  - 
+  - Web Framework
+    - Django 5.0.2 (Python 3.12.1)
+  - 서비스 배포 환경
+    - Amazon Lightsail
+### 2.2 배포 URL
+  - URL
+  - 테스트용 계정
+    ```
+    id : test@gmail.com
+    pw : test1234!!
+    ```
+### 2.3 URL 구조(모놀리식)
