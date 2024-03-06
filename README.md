@@ -92,7 +92,7 @@ gantt
     <tbody>
         <tr>
             <td>메인</td>
-            <td>로그인</td>
+            <td>세부페이지</td>
         </tr>
         <tr>
             <td>
@@ -103,20 +103,20 @@ gantt
             </td>
         </tr>
         <tr>
-            <td>회원가입</td>
-            <td>정보수정</td>
+            <td>About 페이지</td>
+            <td>글쓰기</td>
         </tr>
         <tr>
             <td>
                 <img src="samples/03_about페이지.png" width="100%">
             </td>
             <td>
-                <img src="samples/04_포스트 작성ui3.png" width="100%">
+                <img src="samples/04_포스트 작성.png" width="100%">
             </td>
         </tr>
         <tr>
-            <td>검색</td>
-            <td>번역</td>
+            <td>수정</td>
+            <td>로그인</td>
         </tr>
         <tr>
             <td>
@@ -127,8 +127,8 @@ gantt
             </td>
         </tr>
         <tr>
-            <td>선택삭제</td>
-            <td>글쓰기</td>
+            <td>비밀번호찾기</td>
+            <td>아이디찾기</td>
         </tr>
         <tr>
             <td>
@@ -139,7 +139,7 @@ gantt
             </td>
         </tr>
         <tr>
-            <td>글 상세보기</td>
+            <td>회원가입</td>
         </tr>
         <tr>
             <td>
