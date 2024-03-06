@@ -155,21 +155,44 @@ gantt
 ```mermaid
 erDiagram
     USER ||--o{ POST : "writes"
+    USER ||--o{ COMMENT : "writes"
     USER {
+        int id(PK)
         string username
-        string email
         string password
+        string profile_image
+        datetime created_at
     }
     POST ||--o{ COMMENT : "has"
+    POST ||--o{ TAG : "tagged by"
+    POST ||--o{ CATEGORY : "categorized by"
     POST {
+        int id(PK)
         string title
-        datetime publication_date
         string content
+        file file_upload
+        image image_upload
+        datetime created_at
+        datetime updated_at
         USER author
+        int user_id(FK)
+        int tags(FK)
+        int category(FK)
+    }
+    CATEGORY {
+        int id(PK)
+        string name
+    }
+    TAG {
+        int id(PK)
+        string name
     }
     COMMENT {
-        string content
-        datetime publication_date
-        USER author
+        int id(PK)
+        COMMENT parent(FK)
+        string comment
+        COMMENT comment_reply(FK)
+        datetime created_at
+        datetime updated_at
     }
 ```
