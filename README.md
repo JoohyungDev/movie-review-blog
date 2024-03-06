@@ -152,5 +152,24 @@ gantt
 ### 5.2 화면 설계
 
 ## 6. 데이터베이스 모델링(ERD)
-
-
+```mermaid
+erDiagram
+    USER ||--o{ POST : "writes"
+    USER {
+        string username
+        string email
+        string password
+    }
+    POST ||--o{ COMMENT : "has"
+    POST {
+        string title
+        datetime publication_date
+        string content
+        USER author
+    }
+    COMMENT {
+        string content
+        datetime publication_date
+        USER author
+    }
+```
