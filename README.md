@@ -96,10 +96,10 @@ gantt
         </tr>
         <tr>
             <td>
-		<img src="ui1.png" width="100%">
+		<img src="samples/01_대문.png" width="100%">
             </td>
             <td>
-                <img src="ui2.png" width="100%">
+                <img src="samples/02_세부페이지.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -108,10 +108,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="ui3.png" width="100%">
+                <img src="samples/03_about페이지.png" width="100%">
             </td>
             <td>
-                <img src="ui3.png" width="100%">
+                <img src="samples/04_포스트 작성ui3.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -120,10 +120,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="ui3.png" width="100%">
+                <img src="samples/05_포스트 수정.png" width="100%">
             </td>
             <td>
-                <img src="ui3.png" width="100%">
+                <img src="samples/06_로그인.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -132,22 +132,18 @@ gantt
         </tr>
         <tr>
             <td>
-	        <img src="ui3.png" width="100%">
+	        <img src="samples/07_비밀번호찾기.png" width="100%">
             </td>
             <td>
-                <img src="ui3.png" width="100%">
+                <img src="samples/08_아이디찾기.png" width="100%">
             </td>
         </tr>
         <tr>
             <td>글 상세보기</td>
-            <td>댓글</td>
         </tr>
         <tr>
             <td>
-                <img src="ui3.png" width="100%">
-            </td>
-            <td>
-                <img src="ui3.png" width="100%">
+                <img src="samples/09_회원가입.png" width="100%">
             </td>
         </tr>
     </tbody>
