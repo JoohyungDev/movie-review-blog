@@ -154,45 +154,51 @@ gantt
 ## 6. 데이터베이스 모델링(ERD)
 ```mermaid
 erDiagram
-    USER ||--o{ POST : "writes"
-    USER ||--o{ COMMENT : "writes"
-    USER {
-        int id(PK)
-        string username
-        string password
-        string profile_image
-        datetime created_at
+    user ||--o{ post : write
+    user {
+      integer id PK
+      varchar username
+      varchar password
+      image profile_image
+      datetime created_at
+      varchar ip_address
+      datetime last_login
     }
-    POST ||--o{ COMMENT : "has"
-    POST ||--o{ TAG : "tagged by"
-    POST ||--o{ CATEGORY : "categorized by"
-    POST {
-        int id(PK)
-        string title
-        string content
-        file file_upload
-        image image_upload
-        datetime created_at
-        datetime updated_at
-        USER author
-        int user_id(FK)
-        int tags(FK)
-        int category(FK)
+    post }|--|{ tag : contains
+    post ||--o| category : has
+    post {
+      integer id PK
+      varchar title
+      text content
+      file file_upload
+      image image_upload
+      datetime created_at
+      datetime updated_at
+      varchar writer
+      integer user_id FK
+      integer hits
+      integer tags FK
+      varchar category FK
     }
-    CATEGORY {
-        int id(PK)
-        string name
+    post ||--o{ comment : contains
+    comment ||--o{ comment : contains
+    comment {
+      integer id PK
+      integer parent FK
+      text comment
+      comment comment_reply FK
+      datetime created_at
+      datetime updated_at
     }
-    TAG {
-        int id(PK)
-        string name
+    
+    tag {
+      integer id PK
+      varchar name
     }
-    COMMENT {
-        int id(PK)
-        COMMENT parent(FK)
-        string comment
-        COMMENT comment_reply(FK)
-        datetime created_at
-        datetime updated_at
+    
+    
+    category {
+      integer id PK
+      varchar name
     }
 ```
