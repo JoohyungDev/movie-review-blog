@@ -51,7 +51,7 @@
                         <a href="{{ p.get_absolute_url }}"><img class="card-img-top" src="https://picsum.photos/seed/{{ p.pk }}/700/350" alt="random_img" /></a>
                         {% endif %}
                         <div class="card-body">
-                            <div class="small text-muted">{{ p.created_at }} by <a href="#">작성자명</a></div>
+                            <div class="small text-muted">{{ p.created_at }} 작성자 : <a href="#">{{ p.author }}</a></div>
                             <h2 class="card-title">{{ p.title }}</h2>
                             {% if p.hook_text %}
                                 <h5 class="text-muted">{{ p.hook_text }}</h5>
