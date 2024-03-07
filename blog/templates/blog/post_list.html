@@ -53,7 +53,10 @@
                         <div class="card-body">
                             <div class="small text-muted">{{ p.created_at }} by <a href="#">작성자명</a></div>
                             <h2 class="card-title">{{ p.title }}</h2>
-                            <p class="card-text">{{ p.content }}</p>
+                            {% if p.hook_text %}
+                                <h5 class="text-muted">{{ p.hook_text }}</h5>
+                            {% endif %}
+                            <p class="card-text">{{ p.content | truncatewords:30 }}</p>
                             <a class="btn btn-primary" href="{{ p.get_absolute_url }}">자세히보기 →</a>
                         </div>    
                     </div>
