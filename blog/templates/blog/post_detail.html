@@ -1,25 +1,4 @@
 {% load static %}
-<!-- <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post.title }} - Blog</title>
-</head>
-<body>
-    <nav>
-        <a href="/blog/">Blog</a>
-    </nav>
-    <h1>{{ post.title }}</h1>
-    <h4>{{ post.created_at }}</h4>
-    <p>{{ post.content }}</p>
-    <hr/>
-    <h3>댓글 영역?</h3>
-</body>
-</html> -->
-
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,6 +11,8 @@
         <link rel="icon" type="image/x-icon" href="{% static 'blog/bootstrap/assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'blog/bootstrap/css/styles.css' %}" rel="stylesheet" />
+        <!-- Custom styles for this templete -->
+        <script src="https://kit.fontawesome.com/b79e2951c8.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -75,6 +56,20 @@
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">{{ post.content }}</p>
+                            {% if post.file_upload %}
+                            <a href="{{ post.file_upload.url }}" class="btn btn-outline-secondary" role="button">파일 다운로드:
+                                {% if post.get_file_ext == 'csv' %}
+                                <i class="fa-solid fa-file-csv"></i>
+                                {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                                <i class="fa-solid fa-file-excel"></i>
+                                {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+                                <i class="fa-solid fa-file-word"></i>
+                                {% else %}
+                                <i class="fa-solid fa-file"></i>
+                                {% endif %}
+                                {{ post.get_file_name }}
+                            </a>
+                            {% endif %}
                         </section>
                     </article>
                     <!-- Comments section-->
