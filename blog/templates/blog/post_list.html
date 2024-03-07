@@ -45,7 +45,9 @@
                     {% for p in post_list %}
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        {% if p.thumbnail_image %}
+                        <a href="#!"><img class="card-img-top" src="{{ p.thumbnail_image.url }}" alt="..." /></a>
+                        {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ p.created_at }} by <a href="#">작성자명</a></div>
                             <h2 class="card-title">{{ p.title }}</h2>
