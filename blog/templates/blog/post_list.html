@@ -46,7 +46,9 @@
                     <!-- Featured blog post-->
                     <div class="card mb-4">
                         {% if p.thumbnail_image %}
-                        <a href="#!"><img class="card-img-top" src="{{ p.thumbnail_image.url }}" alt="..." /></a>
+                        <a href="{{ p.get_absolute_url }}"><img class="card-img-top" src="{{ p.thumbnail_image.url }}" alt="..." /></a>
+                        {% else %}
+                        <a href="{{ p.get_absolute_url }}"><img class="card-img-top" src="https://picsum.photos/seed/{{ p.pk }}/700/350" alt="random_img" /></a>
                         {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ p.created_at }} by <a href="#">작성자명</a></div>
