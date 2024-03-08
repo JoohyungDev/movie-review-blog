@@ -45,8 +45,11 @@
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">{{ post.updated_at }} 작성자 : {{ post.author }}</div>
                             <!-- Post categories-->
-                            <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a> -->
-                            <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                            {% if post.category %}
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ post.category }}</a>
+                            {% else %}
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">미분류</a>
+                            {% endif %}
                         </header>
                         <!-- Preview image figure-->
                         {% if post.thumbnail_image %}
@@ -134,20 +137,17 @@
                         <div class="card-header">Categories</div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
+                                <!-- <div class="col-sm-6"> -->
+                                    <ul class="list-group list-group-flush">
+                                        {% for category in categories %}
+                                        <li class="list-group-item">
+                                            <a href="{{ category.get_absolute_url }}">{{ category }} ({{ category.post_count }})</a>
+                                        </li>
+                                        {% endfor %}
+                                        <li class="list-group-item">
+                                            <a href="/blog/category/no_category/">미분류 ({{ no_category_post_count }})</a>
+                                        </li>
                                     </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
