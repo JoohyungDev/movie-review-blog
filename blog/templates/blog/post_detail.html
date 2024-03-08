@@ -20,7 +20,12 @@
                             </a>
                             {% endif %}
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">{{ post.updated_at }} 작성자 : {{ post.author }}</div>
+                            <div class="text-muted fst-italic mb-2">
+                                작성자 : {{ post.author }} <br>
+                                <i class="fa-solid fa-pen"></i> {{ post.created_at }} 
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                 {{ post.updated_at }} 
+                            </div>
                             <!-- Post categories-->
                             {% if post.category %}
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ post.category }}</a>

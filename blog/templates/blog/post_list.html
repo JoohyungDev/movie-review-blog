@@ -48,7 +48,9 @@
                             {% else %}
                             <span class="badge bg-secondary text-decoration-none link-light">미분류</span>
                             {% endif %}
-                            <div class="small text-muted">{{ p.created_at }} 작성자 : <a href="#">{{ p.author }}</a></div>
+                            <div class="small text-muted"><i class="fa-solid fa-pen"></i> {{ p.created_at }}  
+                                 <a href="#">{{ p.author }}</a>
+                            </div>
                             <h2 class="card-title">{{ p.title }}</h2>
                             {% if p.hook_text %}
                                 <h5 class="text-muted">{{ p.hook_text }}</h5>
