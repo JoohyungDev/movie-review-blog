@@ -10,9 +10,6 @@
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
-                            {% if post.hook_text %}
-                            <h5 class="text-muted">{{ post.hook_text }}</h5>
-                            {% endif %}
                             <!-- Post update -->
                             {% if user.is_authenticated and user == post.author %}
                             <a class="btn btn-primary btn-sm float-end" href="/blog/update_post/{{ post.pk }}" role="button">

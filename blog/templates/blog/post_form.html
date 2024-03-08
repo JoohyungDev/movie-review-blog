@@ -11,6 +11,10 @@
                 {% csrf_token %}
                 <table>
                     {{ form.as_table }}
+                    <tr>
+                        <th><label for="id_tags_str">Tags:</label></th>
+                        <td><input type="text" name="tags_str" id="id_tags_str"></td>
+                    </tr>
                 </table>
                 <div class="container text-end mt-4">
                 <button type="submit" class="btn btn-primary">생성</button>
