@@ -13,6 +13,12 @@
                             {% if post.hook_text %}
                             <h5 class="text-muted">{{ post.hook_text }}</h5>
                             {% endif %}
+                            <!-- Post update -->
+                            {% if user.is_authenticated and user == post.author %}
+                            <a class="btn btn-primary btn-sm float-end" href="/blog/update_post/{{ post.pk }}" role="button">
+                                <i class="fa-solid fa-pen-to-square"></i> 수정하기
+                            </a>
+                            {% endif %}
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">{{ post.updated_at }} 작성자 : {{ post.author }}</div>
                             <!-- Post categories-->
