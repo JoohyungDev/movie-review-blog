@@ -75,6 +75,18 @@
                                 {{ post.get_file_name }}
                             </a>
                             {% endif %}
+                        </br>
+                        </br>
+                            {% if post.tags.exists %}
+                                <i class="fas fa-tags"></i>
+                                {% for tag in post.tags.iterator %}
+                                    <a href="{{ tag.get_absolute_url }}">
+                                        <span class="badge rounded-pill bg-light text-success">{{ tag }}</span>
+                                    </a>
+                                {% endfor %}
+                                <br/>
+                                <br/>
+                            {% endif %}
                         </section>
                     </article>
                     <!-- Comments section-->

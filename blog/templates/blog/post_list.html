@@ -11,6 +11,8 @@
         <link rel="icon" type="image/x-icon" href="{% static 'blog/bootstrap/assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'blog/bootstrap/css/styles.css' %}" rel="stylesheet" />
+        <!-- Custom styles for this templete -->
+        <script src="https://kit.fontawesome.com/b79e2951c8.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -68,6 +70,16 @@
                                 <h5 class="text-muted">{{ p.hook_text }}</h5>
                             {% endif %}
                             <p class="card-text">{{ p.content | truncatewords:30 }}</p>
+                            {% if p.tags.exists %}
+                                <i class="fas fa-tags"></i>
+                                {% for tag in p.tags.iterator %}
+                                    <a href="{{ tag.get_absolute_url }}">
+                                        <span class="badge rounded-pill bg-light text-success">{{ tag }}</span>
+                                    </a>
+                                {% endfor %}
+                                <br/>
+                                <br/>
+                            {% endif %}
                             <a class="btn btn-primary" href="{{ p.get_absolute_url }}">자세히보기 →</a>
                         </div>    
                     </div>
