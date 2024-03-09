@@ -2,11 +2,18 @@ from typing import Any
 from django.http import HttpRequest
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Category, Tag
 from django.core.exceptions import PermissionDenied
 from django.utils.text import slugify
+from django.urls import reverse_lazy
 
 
 class PostList(ListView):
@@ -150,3 +157,11 @@ def tag_page(request, slug):
             "no_category_post_count": Post.objects.filter(category=None).count(),
         },
     )
+
+
+class PostDelete(DeleteView):
+    model = Post
+    success_url = reverse_lazy("post_list")
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
