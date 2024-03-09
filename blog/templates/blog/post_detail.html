@@ -65,7 +65,7 @@
                         {% endif %}
                         <!-- Post content-->
                         <section class="mb-5">
-                            <p class="fs-5 mb-4">{{ post.content }}</p>
+                            <p class="fs-5 mb-4">{{ post.get_content_markdown | safe }}</p>
                             {% if post.file_upload %}
                             <a href="{{ post.file_upload.url }}" class="btn btn-outline-secondary" role="button">파일 다운로드:
                                 {% if post.get_file_ext == 'csv' %}
