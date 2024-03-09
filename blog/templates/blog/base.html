@@ -24,7 +24,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{% url 'post_list' %}">Home</a></li>
-                    <li class="nav-item"><a role="button" class="nav-link" aria-current="page" href="{% provider_login_url 'google' %}">Login</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a role="button" class="nav-link" aria-current="page" href="{% provider_login_url 'google' %}">Login</a>
+                        <!-- <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a> -->
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
