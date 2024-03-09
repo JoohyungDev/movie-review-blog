@@ -1,5 +1,5 @@
 {% extends 'blog/base_full_width.html' %}
-
+{% load crispy_forms_tags %}
 {% block main %}
 <div class="container col-12 mt-5">
     <div class="row">
@@ -9,17 +9,16 @@
             <hr/>
             <form method="post" enctype="multipart/form-data" class="mt-5">
                 {% csrf_token %}
-                <table>
-                    {{ form.as_table }}
-                    <tr>
-                        <th><label for="id_tags_str">Tags:</label></th>
-                        <td><input type="text" name="tags_str" id="id_tags_str" value="{{ tags_str_default }}"></td>
-                    </tr>
-                </table>
+                {{ form | crispy }}
+                <div id="div_id_tags_str">
+                    <label for="id_tags_str">Tags</label>
+                    <input type="text" name="tags_str" id="id_tags_str" 
+                    class="textinput textInput form-control" value="{{ tags_str_default }}">
+                </div> 
                 <div class="container text-end mt-4">
                 <button type="submit" class="btn btn-primary">저장</button>
                 </div>
+                </br>
             </form>
         </div>
-
 {% endblock %}
