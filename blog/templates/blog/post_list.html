@@ -21,9 +21,11 @@
                         </a>
                         {% endif %}
                     {% endif %}
-                    <h1>Post{% if category %}
+                    <h1>Post
+                        {% if search_info %} <small class="text_muted">{{ search_info }}</small>{% endif %}
+                        {% if category %}
                         <span class="badge bg-secondary text-decoration-none link-light">
-                            {{ category }}
+                        {{ category }}
                         </span>
                         {% endif %}
                         {% if tag %}
