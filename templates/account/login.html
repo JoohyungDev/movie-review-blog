@@ -9,8 +9,8 @@
         {% trans "Sign In" %}
     {% endelement %}
     <p>
-        {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+        {% blocktrans %}아직 계정을 만들지 않으셨다면, 
+    <a href="{{ signup_url }}">회원가입</a> 먼저 해주세요.{% endblocktrans %}
     </p>
     {% url 'account_login' as login_url %}
     {% element form form=form method="post" action=login_url tags="entrance,login" %}
