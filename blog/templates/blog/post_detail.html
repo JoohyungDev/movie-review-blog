@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
     {% block main %}
         <!-- Page content-->
         <div class="container mt-5">
@@ -98,10 +99,19 @@
                     <section class="mb-5">
                         <div class="card bg-light">
                             <div class="card-body" id="comment-area" >
+                                {% if user.is_authenticated %}
                                 <!-- Comment form-->
-                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="댓글을 작성하세요"></textarea>
+                                <form class="mb-4" id="comment-form" method="POST" action="{{ post.get_absolute_url }}new_comment/">
+                                    {% csrf_token %}
+                                    <!-- <textarea class="form-control" rows="3" placeholder="댓글을 작성하세요"></textarea> -->
+                                    {{ comment_form | crispy }}
                                 <button type="submit" class="btn btn-primary btn-sm float-end my-3">댓글 작성</button>
                                 </form>
+                                {% else %}
+                                <div class="d-grid">
+                                <a role="button" class="btn btn-outline-dark" href="#" date-toggle="modal" data-target="#loginModal">로그인이 필요합니다</a>
+                                </div>
+                                {% endif %}
                                 <!-- Comment with nested comments-->
                                 <div class="d-flex mt-5 mb-4">
                                     {% if post.comment_set.exists %}
