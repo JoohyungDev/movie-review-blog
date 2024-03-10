@@ -1,0 +1,84 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block head_title %}
+            {% endblock head_title %}
+        </title>
+        {% block extra_head %}
+        {% endblock extra_head %}
+        <link rel="icon" type="image/x-icon" href="{% static 'blog/bootstrap/assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'blog/bootstrap/css/styles.css' %}" rel="stylesheet" />
+        <!-- Custom styles for this templete -->
+        <script src="https://kit.fontawesome.com/b79e2951c8.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'post_list' %}">JooHyung's log</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'post_list' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Login</a></li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+        {% block body %}
+        <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+            <div class="row">
+                <div class="col">
+                    {% if messages %}
+                    <div>
+                        <strong>{% trans "Messages:" %}</strong>
+                        <ul>
+                            {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <strong>{% trans "Menu:" %}</strong>
+                        <ul>
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a href="{% url 'account_email' %}">{% trans "Change Email" %}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+        
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
+        </div>
+        {% block extra_body %}
+        {% endblock extra_body %}
+        {% endblock body %}
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Joohyung 2024</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'blog/bootstrap/js/scripts.js' %}"></script>
+    </body>
+</html>
