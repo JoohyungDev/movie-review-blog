@@ -15,11 +15,9 @@
                 <!-- Blog entries-->
                 <div class="col-lg-8">
                     {% if user.is_authenticated %}
-                        {% if user.is_superuser %}
                         <a class="btn btn-primary btn-sm float-end" href="/blog/create_post/" role="button">
                             <i class="fa-solid fa-pen-to-square"></i> 새 글 작성
                         </a>
-                        {% endif %}
                     {% endif %}
                     <h1>Post
                         {% if search_info %} <small class="text_muted">{{ search_info }}</small>{% endif %}
