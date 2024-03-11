@@ -20,6 +20,7 @@ from .forms import CommentForm
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.models import User
 
 
 class PostList(ListView):
@@ -241,3 +242,9 @@ def delete_comment(request, pk):
 
 class ChangePassword(PasswordChangeView):
     success_url = reverse_lazy("post_list")
+
+
+class UserProfile(DetailView):
+    model = User
+    template_name = "blog/profile.html"
+    context_object_name = "user_obj"

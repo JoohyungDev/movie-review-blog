@@ -34,9 +34,10 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ user.username }}
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
-                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'profile' user.pk %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="/accounts/logout/">Log Out</a></li>
+                        </ul>
                     </li>
                     {% else %}
                     <li class="nav-item">

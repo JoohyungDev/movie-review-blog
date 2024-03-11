@@ -1,0 +1,38 @@
+{% extends 'blog/base_full_width.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div class="container col-12 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 my-5">
+            <!-- Post content -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title">{{ user_obj }}'s 프로필</h1>
+                    <hr/>
+                    <form method="post" class="mt-3">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div class="mb-3">
+                            <h5>이메일: <small>{{ user.email }}</small></h5> 
+                            <h5>아이디: <small>{{ user }}</small></h5>
+                            <h5>성: <small>{{ user.last_name }}</small></h5>
+                            <h5>이름: <small>{{ user.first_name }}</small></h5>
+                            <h5>그룹: <small>{{ user.groups }}</small></h5>
+                            <h5>활성화 여부: <small>{{ user.is_active }}</small></h5>
+                            <h5>관리자 여부: <small>{{ user.is_superuser }}</small></h5>
+                            <h5>최초 로그인: <small>{{ user.date_joined }}</small></h5>
+                            <h5>마지막 로그인: <small> {{ user.last_login }}</small></h5>
+                        </div>
+                        <div class="mb-3">
+                            <a href="/blog/change_password/" class="btn btn-outline-secondary">비밀번호 변경하기</a>
+                        </div>
+                        <div class="text-end mt-4">
+                            <button type="submit" class="btn btn-primary">저장</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
