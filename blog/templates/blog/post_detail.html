@@ -114,7 +114,7 @@
                                 <!-- Comment with nested comments-->
                                 <div class="d-flex mt-5 mb-4 row">
                                     {% if post.comment_set.exists %}
-                                        {% for comment in post.comment_set.iterator %}
+                                        {% for comment in post.comment_set.iterator %} 
                                         <div class="d-flex my-3">
                                             <!-- Parent comment-->
                                             <div class="flex-shrink-0" id="comment-{{ comment.pk }}">
@@ -124,12 +124,21 @@
                                                 <div class="fw-bold">{{ comment.author.username }} 
                                                     <small class="text-muted row ms-auto">{{ comment.created_at }}</small>
                                                 </div>
+                                                {% if comment.created_at != comment.updated_at %}
+                                                <p class="text-muted float-end"><small>수정됨: {{ comment.updated_at }}</small></p>
+                                                {% endif %}
                                                 <p>{{ comment.content | linebreaks }}</p>
+                                            </div>
+                                            <div class="ms-auto">
+                                                {% if user.is_authenticated and comment.author == user %}
+                                                    <a role="button" class="btn btn-sm" id="comment-{{ comment.pk }}-update-btn" 
+                                                    href="/blog/update_comment/{{ comment.pk }}/">수정</a>
+                                                {% endif %}
                                             </div>
                                         </div>
                                         {% endfor %}
                                 </div>
-                            {% endif %}
+                                    {% endif %}
                             </div>
                         </div>
                     </section>

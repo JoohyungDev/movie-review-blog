@@ -1,0 +1,21 @@
+{% extends 'blog/base_full_width.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<div class="container col-12 mt-5">
+    <div class="row">
+        <div class="my-5">
+            <!-- Post content-->
+            <h1>Update Comment</h1>
+            <hr/>
+            <form method="post" class="mt-5">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="container text-end mt-4 mb-5">
+                    <button type="submit" class="btn btn-primary">저장</button>
+                </div>
+            </br>
+            </form>
+            <div class="mb-5"></div>
+        </div>
+{% endblock %}
