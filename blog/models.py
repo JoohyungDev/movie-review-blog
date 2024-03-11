@@ -49,7 +49,7 @@ class Post(models.Model):
     category = models.ForeignKey(
         Category, blank=True, null=True, on_delete=models.SET_NULL
     )
-
+    view_count = models.PositiveIntegerField(default=0)
     tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):

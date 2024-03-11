@@ -43,6 +43,13 @@ class PostDetail(DetailView):
         context["comment_form"] = CommentForm
         return context
 
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get("pk")
+        post = Post.objects.get(pk=pk)
+        post.view_count += 1
+        post.save()
+        return super().get_object(queryset)
+
 
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
