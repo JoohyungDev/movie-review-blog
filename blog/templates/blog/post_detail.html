@@ -13,15 +13,15 @@
                             <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
                             <!-- Post update -->
                             {% if user.is_authenticated and user == post.author %}
-                            <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#deleteCommentModal">
                                 <i class="fa-solid fa-trash"></i> 삭제
                             </button>
                             <!-- Delete Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteCommentModal" tabindex="-1" aria-labelledby="deleteCommentModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">포스트 삭제</h5>
+                                    <h5 class="modal-title" id="deleteCommentModalLabel">포스트 삭제</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -133,7 +133,27 @@
                                                 {% if user.is_authenticated and comment.author == user %}
                                                     <a role="button" class="btn btn-sm" id="comment-{{ comment.pk }}-update-btn" 
                                                     href="/blog/update_comment/{{ comment.pk }}/">수정</a>
+                                                    <a role="button" class="btn btn-sm" id="comment-{{ comment.pk }}-delete-modal-btn" 
+                                                    href="#" data-bs-toggle="modal" data-bs-target="#deleteCommentModal-{{ comment.pk }}">삭제</a>
                                                 {% endif %}
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1" aria-labelledby="deleteCommentModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteCommentModalLabel">정말로 삭제하시겠습니까?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <del>{{ comment | linebreaks }}</del>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                                    <a role="button" class="btn btn-primary" href="/blog/delete_comment/{{ comment.pk }}/">확인</a>
+                                                    </div>
+                                                </div>
+                                                </div>
                                             </div>
                                         </div>
                                         {% endfor %}
