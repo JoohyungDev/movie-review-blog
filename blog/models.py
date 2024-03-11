@@ -81,5 +81,11 @@ class Comment(models.Model):
     def get_absolute_url(self):
         return f"{self.post.get_absolute_url()}#comment-{self.pk}"
 
+    def get_avatar_url(self):
+        if self.author.socialaccount_set.exists():
+            return self.author.socialaccount_set.first().get_avatar_url()
+        else:
+            return "https://picsum.photos/seed/{ self.author.pk }/50/50"
+
     class Meta:
         ordering = ["-created_at"]
