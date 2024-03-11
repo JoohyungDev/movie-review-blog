@@ -3,6 +3,7 @@ from pathlib import Path
 from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdown
+from django.conf import settings
 
 
 class Category(models.Model):
@@ -89,3 +90,9 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    nickname = models.CharField(max_length=64)
+    profile_photo = models.ImageField(blank=True)

@@ -244,7 +244,13 @@ class ChangePassword(PasswordChangeView):
     success_url = reverse_lazy("post_list")
 
 
-class UserProfile(DetailView):
+# class UserProfile(DetailView):
+#     model = User
+#     template_name = "blog/profile.html"
+#     context_object_name = "user_obj"
+
+
+class ProfileDetail(LoginRequiredMixin, DeleteView):
+    context_object_name = "profile_user"
     model = User
     template_name = "blog/profile.html"
-    context_object_name = "user_obj"

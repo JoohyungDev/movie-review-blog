@@ -1,6 +1,8 @@
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
-from .models import Post, Category, Tag, Comment
+from .models import Post, Category, Tag, Comment, Profile
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 
 admin.site.register(Post, MarkdownxModelAdmin)
 
@@ -19,3 +21,16 @@ class TagAdmin(admin.ModelAdmin):
 admin.site.register(Tag, TagAdmin)
 
 admin.site.register(Comment)
+
+
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    con_delete = False
+
+
+class CustomUserAdmin(UserAdmin):
+    inlines = (ProfileInline,)
+
+
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
