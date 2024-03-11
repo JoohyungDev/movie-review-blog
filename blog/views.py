@@ -18,6 +18,8 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from .forms import CommentForm
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class PostList(ListView):
@@ -235,3 +237,7 @@ def delete_comment(request, pk):
         return redirect(post.get_absolute_url())
     else:
         raise PermissionDenied
+
+
+class ChangePassword(PasswordChangeView):
+    success_url = reverse_lazy("post_list")
