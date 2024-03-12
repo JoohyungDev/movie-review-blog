@@ -112,7 +112,8 @@ class Photo(models.Model):
 
 class ReComment(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
-    content = models.CharField("대댓글", max_length=150)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="작성자")
+    content = models.CharField(max_length=150, verbose_name="대댓글")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

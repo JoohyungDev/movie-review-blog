@@ -252,6 +252,7 @@ def create_recomment(request, pk):
 
     if filled_form.is_valid():
         recomment = filled_form.save(commit=False)
+        recomment.author = request.user
         recomment.comment_id = request.POST.get("comment")
         recomment.save()
 

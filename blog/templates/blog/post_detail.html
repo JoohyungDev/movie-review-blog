@@ -159,8 +159,10 @@
                                         <!-- Child comment view -->
                                         <div class="ms-3">
                                             <div class="ms-5">
+                                            <hr/>
                                             {%for recom in comment.recomment_set.all%}
-                                            &nbsp ↪{{recom}}<br>
+                                            &nbsp  ↪{{recom.author}}<small> {{recom.created_at}} </small> <br>
+                                            &nbsp {{recom}}  <hr/><br>
                                             {%endfor%}
                                             </div>
                                         </div>
@@ -171,8 +173,7 @@
                                                 {% for recom_form in recomment_form %}
                                                     {% if recom_form.label != 'Comment' %}
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" placeholder="{{ recom_form.label }}" 
-                                                            aria-label="{{ recom_form.label }}" name="{{ recom_form.name }}" value="{{ recom_form.value }}" aria-describedby="button-addon2">
+                                                            <input type="text" class="form-control" aria-label="{{ recom_form.label }}" name="{{ recom_form.name }}" aria-describedby="button-addon2">
                                                             <input type="hidden" name="comment" value="{{ comment.pk }}">
                                                             <button type="submit" class="btn btn-outline-secondary" id="button-addon2">작성</button>
                                                         </div>
