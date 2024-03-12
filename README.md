@@ -128,6 +128,7 @@ graph TD;
         uploadFileInPost[파일 업로드]
 	downloadFile[파일 다운로드]
         viewCountInPost[조회수]
+	author[작성자]
 	createdAt[작성 시간]
 	updatedAt[수정 시간]
         tagAddInPost[태그 추가]
