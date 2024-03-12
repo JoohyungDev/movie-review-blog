@@ -1,4 +1,5 @@
 from typing import Any
+from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
 from django.http import HttpRequest
 from django.http.response import HttpResponse
@@ -244,13 +245,14 @@ class ChangePassword(PasswordChangeView):
     success_url = reverse_lazy("post_list")
 
 
-# class UserProfile(DetailView):
-#     model = User
-#     template_name = "blog/profile.html"
-#     context_object_name = "user_obj"
-
-
 class ProfileDetail(LoginRequiredMixin, DeleteView):
     context_object_name = "profile_user"
     model = User
     template_name = "blog/profile.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        profile_user = self.get_object()
+        if request.user == profile_user:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
