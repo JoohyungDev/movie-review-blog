@@ -18,10 +18,14 @@ urlpatterns = [
         views.ChangePassword.as_view(),
         name="password_change",
     ),
-    # path("profile/<int:pk>/", views.UserProfile.as_view(), name="profile"),
     path(
         "profile/<int:pk>/",
         views.ProfileDetail.as_view(),
         name="profile",
+    ),
+    path(
+        "update_profile/<int:pk>/",
+        views.ProfileUpdate.as_view(),
+        name="profile_update",
     ),
 ]

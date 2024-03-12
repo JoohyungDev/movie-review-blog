@@ -17,11 +17,12 @@ from django.core.exceptions import PermissionDenied
 from django.utils.text import slugify
 from django.urls import reverse_lazy
 from django.db.models import Q
-from .forms import CommentForm
+from .forms import CommentForm, UserForm, ProfileForm
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
+from django.views import View
 
 
 class PostList(ListView):
@@ -256,3 +257,51 @@ class ProfileDetail(LoginRequiredMixin, DeleteView):
             return super().dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
+
+
+class ProfileUpdate(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        user_form = UserForm(
+            initial={
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+            }
+        )
+
+        if hasattr(user, "profile"):
+            profile = user.profile
+            profile_form = ProfileForm(
+                initial={
+                    "nickname": profile.nickname,
+                    "profile_photo": profile.profile_photo,
+                }
+            )
+        else:
+            profile_form = ProfileForm()
+
+        return render(
+            request,
+            "blog/profile_update.html",
+            {"user_form": user_form, "profile_form": profile_form},
+        )
+
+    def post(self, request, *args, **kwargs):
+        u = User.objects.get(id=request.user.pk)
+        user_form = UserForm(request.POST, instance=u)
+
+        if user_form.is_valid():
+            user_form.save()
+
+        if hasattr(u, "profile"):
+            profile = u.profile
+            profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        else:
+            profile_form = ProfileForm(request.POST, request.FILES)
+
+        if profile_form.is_valid():
+            profile = profile_form.save(commit=False)
+            profile.user = u
+            profile.save()
+
+        return redirect("profile", pk=request.user.pk)
