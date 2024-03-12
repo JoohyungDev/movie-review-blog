@@ -101,9 +101,9 @@ graph TD;
 
     subgraph blog [Blog 앱]
         profile[프로필]
-        postCRUD[게시물 CRUD]
-        commentCRUD[댓글 CRUD]
-        replyCRUD[대댓글 CRUD]
+        postCRUD[게시물]
+        commentCRUD[댓글]
+        replyCRUD[대댓글]
     end
 
     subgraph profileFeatures [프로필 조회 및 변경]
