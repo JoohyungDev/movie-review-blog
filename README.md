@@ -90,7 +90,54 @@ blog	|'update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.h
 
 
 ## 3. 요구사항 명세와 기능 명세
+```mermaid
+graph TD;
+    subgraph accounts [Accounts 앱]
+        signup[회원가입]
+        login[로그인]
+        google_login[구글 로그인]
+        logout[로그아웃]
+    end
 
+    subgraph blog [Blog 앱]
+        profile[프로필 조회 및 변경]
+        postCRUD[게시물 CRUD]
+        commentCRUD[댓글 CRUD]
+        replyCRUD[대댓글 CRUD]
+        password_change[비밀번호 변경]
+    end
+
+    subgraph postFeatures [게시물 관련 기능]
+        createPost[게시글 작성]
+        updatePost[게시글 수정]
+        deletePost[게시글 삭제]
+        postList[게시글 목록]
+        postDetail[게시글 상세보기]
+        searchPost[게시글 검색]
+        uploadPhoto[사진 업로드]
+        viewCount[조회수 기능]
+    end
+
+    subgraph commentFeatures [댓글 관련 기능]
+        addComment[댓글 추가]
+        deleteComment[댓글 삭제]
+        addReply[대댓글]
+        editComment[댓글 수정]
+    end
+
+    login --> profile;
+    login --> postCRUD;
+    login --> commentCRUD;
+    login --> replyCRUD;
+    login --> password_change;
+    postCRUD --> postFeatures;
+    commentCRUD --> commentFeatures;
+
+    classDef app fill:#f9f,stroke:#333,stroke-width:2px;
+    class accounts,blog app;
+
+
+```
 ## 4. 프로젝트 구조와 개발 일정
 ### 4.1 프로젝트 구조
 ```
