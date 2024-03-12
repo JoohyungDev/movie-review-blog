@@ -93,6 +93,7 @@ blog	|'update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.h
 
 ## 4. 프로젝트 구조와 개발 일정
 ### 4.1 프로젝트 구조
+```
 📦my-hobby-blog
  ┣ 📂accounts
  ┣ 📂blog
@@ -168,6 +169,7 @@ blog	|'update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.h
  ┣ 📜manage.py
  ┣ 📜README.md
  ┗ 📜requirements.txt
+```
 ### 4.2 WBS
 ```mermaid
 gantt
