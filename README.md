@@ -50,15 +50,20 @@
     ```
   - 구글 로그인 유저
 ### 2.3 URL 구조(모놀리식)
-- accounts(django-allauth 라이브러리)
+- accounts (Django Allauth 사용)
 
+accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통합된 앱입니다. 이 앱은 django-allauth 패키지를 사용하여 구현되었으며, 사용자 로그인, 로그아웃, 회원가입, 소셜 로그인 등의 기능을 제공합니다. 이를 통해 사용자 경험(UX)을 대폭 향상합니다.
+
+#### 기능
+- 회원가입: 사용자는 이메일 주소, 아이디, 비밀번호를 사용하여 계정을 생성할 수 있습니다. 
+
+- 로그인/로그아웃: 사용자는 아이디와 비밀번호를 사용하여 로그인할 수 있으며, 로그아웃도 가능합니다.
+
+- 소셜 로그인: 페이스북, 구글, 트위터 등 여러 소셜 미디어 계정을 사용하여 로그인할 수 있습니다.
+
+- 계정 관리: 사용자는 비밀번호 변경, 이메일 주소 추가 및 변경 등의 계정 관리 기능을 사용할 수 있습니다. 
   
-| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
-|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-| accounts  | 'signup/'                                  | signup          | accounts/signup.html                    |회원가입         |
-| accounts  | 'login/'                                   | login             | accounts/login.html                   |로그인           |
-| accounts  | 'logout/'                                  | logout            | accounts/logout.html                  |로그아웃         |
-
+- 비밀번호 재설정: 비밀번호를 잊은 사용자는 이메일을 통해 비밀번호를 재설정할 수 있습니다.
 
 
 - blog
@@ -77,10 +82,11 @@ blog	|'blog/search/str:q/'				|PostSearch.as_view()		|blog/post_search.html		|�
 blog	|'post/int:pk/new_comment/'			|new_comment			|blog/comment_form.html		|댓글 입력 폼|
 blog	|'post/update_comment/int:pk/'			|CommentUpdate.as_view()	|blog/comment_update.html	|댓글 업데이트|
 blog	|'post/delete_comment/int:pk/'			|delete_comment 		|blog/comment_confirm_delete.html|댓글 삭제|
+blog	|'create_recomment/int:pk/'			|create_recomment		|blog/recomment_form.html	|대댓글 입력 폼 |
 blog	|'change_password/'				|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
 blog	|'profile/int:pk/'				|profile			|blog/profile.html		|프로필 보기|
 blog	|'update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
-blog	|'create_recomment/int:pk/'			|create_recomment		|blog/recomment_form.html	|대댓글 작성 |
+
 
 
 ## 3. 요구사항 명세와 기능 명세
