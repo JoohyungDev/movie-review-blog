@@ -103,28 +103,32 @@ graph TD;
         profile[프로필]
         postCRUD[게시물]
         commentCRUD[댓글]
-        replyCRUD[대댓글]
     end
 
     subgraph profileFeatures [프로필 조회 및 변경]
         nicknameSetting[닉네임 변경]
         nameSetting[이름 변경]
         profilePhotoUpload[프로필 사진 업로드]
+	    thumbnailImageUpload[썸네일 사진 업로드]
         passwordEdit[비밀번호 수정]
     end
 
     subgraph postFeatures [게시물 관련 기능]
-        createPost[게시글 작성]
-        updatePost[게시글 수정]
-        deletePost[게시글 삭제]
-        postList[게시글 목록]
-        postDetail[게시글 상세보기]
+        createPost[게시글 추가]
+	    postList[게시글 목록]
         searchPost[게시글 검색]
-        uploadPhoto[사진 업로드]
-        viewCount[조회수 기능]
-        uploadFile[파일 업로드]
         categorySelectAndView[카테고리 선택 및 조회]
         tagSelectAndView[태그 선택 및 조회]
+    end
+
+    subgraph postDetail [게시글 상세보기]
+        deletePost[게시물 삭제]
+        editPost[게시물 수정]
+        uploadPhotoInPost[사진 업로드]
+        uploadFileInPost[파일 업로드]
+        viewCountInPost[조회수]
+        tagAddInPost[태그 추가]
+        categoryAddInPost[카테고리 추가]
     end
 
     subgraph commentFeatures [댓글 관련 기능]
@@ -138,12 +142,12 @@ graph TD;
     profile --> profileFeatures;
     login --> postCRUD;
     login --> commentCRUD;
-    login --> replyCRUD;
     postCRUD --> postFeatures;
+    postFeatures --> postDetail;
     commentCRUD --> commentFeatures;
 
     classDef app fill:#f9f,stroke:#333,stroke-width:2px;
-    class accounts,blog,profileFeatures,postFeatures,commentFeatures app;
+    class accounts,blog,profileFeatures,postFeatures,commentFeatures,postDetail app;
 
 
 
