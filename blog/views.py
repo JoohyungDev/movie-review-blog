@@ -249,19 +249,6 @@ class ChangePassword(PasswordChangeView):
     success_url = reverse_lazy("post_list")
 
 
-# class ProfileDetail(LoginRequiredMixin, DeleteView):
-#     context_object_name = "profile_user"
-#     model = User
-#     template_name = "blog/profile.html"
-
-#     def dispatch(self, request, *args, **kwargs):
-#         profile_user = self.get_object()
-#         if request.user == profile_user:
-#             return super().dispatch(request, *args, **kwargs)
-#         else:
-#             raise PermissionDenied
-
-
 @login_required
 def profile(request, pk):
     user = get_object_or_404(User, pk=pk)
