@@ -100,11 +100,17 @@ graph TD;
     end
 
     subgraph blog [Blog 앱]
-        profile[프로필 조회 및 변경]
+        profile[프로필]
         postCRUD[게시물 CRUD]
         commentCRUD[댓글 CRUD]
         replyCRUD[대댓글 CRUD]
-        password_change[비밀번호 변경]
+    end
+
+    subgraph profileFeatures [프로필 조회 및 변경]
+        nicknameSetting[닉네임 변경]
+        nameSetting[이름 변경]
+        profilePhotoUpload[프로필 사진 업로드]
+        passwordEdit[비밀번호 수정]
     end
 
     subgraph postFeatures [게시물 관련 기능]
@@ -129,15 +135,16 @@ graph TD;
     end
 
     login --> profile;
+    profile --> profileFeatures;
     login --> postCRUD;
     login --> commentCRUD;
     login --> replyCRUD;
-    login --> password_change;
     postCRUD --> postFeatures;
     commentCRUD --> commentFeatures;
 
     classDef app fill:#f9f,stroke:#333,stroke-width:2px;
-    class accounts,blog,postFeatures,commentFeatures app;
+    class accounts,blog,profileFeatures,postFeatures,commentFeatures app;
+
 
 
 
