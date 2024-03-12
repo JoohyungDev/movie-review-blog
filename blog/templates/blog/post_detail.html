@@ -155,17 +155,6 @@
                                                 </div>
                                                 </div>
                                             </div>
-                                            <!-- Child comment -->
-                                            <form method="post" action="{% url 'create_recomment' post.pk %}">
-                                                {%csrf_token%}
-                                                {%for recom_form in recomment_form%}
-                                                    {%if recom_form.label != 'Comment' %}
-                                                    {{recom_form.label}} : {{recom_form}}
-                                                    {%endif%}
-                                                {%endfor%}
-                                                <input type="hidden" name="comment" value="{{ comment.pk }}">
-                                                <input type="submit">
-                                            </form>
                                         </div>
                                         <!-- Child comment view -->
                                         <div class="ms-3">
@@ -174,6 +163,22 @@
                                             &nbsp ↪{{recom}}<br>
                                             {%endfor%}
                                             </div>
+                                        </div>
+                                        <!-- Child comment write -->
+                                        <div class="ms-4 mt-3">
+                                            <form method="post" action="{% url 'create_recomment' post.pk %}" class="ms-5">
+                                                {% csrf_token %}
+                                                {% for recom_form in recomment_form %}
+                                                    {% if recom_form.label != 'Comment' %}
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" placeholder="{{ recom_form.label }}" 
+                                                            aria-label="{{ recom_form.label }}" name="{{ recom_form.name }}" value="{{ recom_form.value }}" aria-describedby="button-addon2">
+                                                            <input type="hidden" name="comment" value="{{ comment.pk }}">
+                                                            <button type="submit" class="btn btn-outline-secondary" id="button-addon2">작성</button>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </form>
                                         </div>
                                         {% endfor %}
                                 </div>
