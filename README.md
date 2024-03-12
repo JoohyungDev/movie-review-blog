@@ -126,7 +126,10 @@ graph TD;
         editPost[게시물 수정]
         uploadPhotoInPost[사진 업로드]
         uploadFileInPost[파일 업로드]
+	downloadFile[파일 다운로드]
         viewCountInPost[조회수]
+	createdAt[작성 시간]
+	updatedAt[수정 시간]
         tagAddInPost[태그 추가]
         categoryAddInPost[카테고리 추가]
     end
