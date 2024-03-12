@@ -33,51 +33,54 @@
 ## 2. 개발 환경 및 배포 URL
 ### 2.1 개발 환경
   - Web Framework
-    - Django 5.0.2 (Python 3.12.1)
+    - Django 5.0.3 (Python 3.11.7)
   - 서비스 배포 환경
     - Amazon Lightsail
 ### 2.2 배포 URL
   - URL
-  - 테스트용 계정
+  - 관리자
     ```
-    id : test@gmail.com
-    pw : test1234!!
+    id : pjh
+    pw : pjh1234!!
     ```
+  - 일반 유저
+    ```
+    id : pjh1
+    pw : pjh11234!!
+    ```
+  - 구글 로그인 유저
 ### 2.3 URL 구조(모놀리식)
-- main
+- accounts(django-allauth 라이브러리)
 
+  
 | App       | URL                                        | Views Function    | HTML File Name                        | Note           |
 |-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-| main      | '/'                                        | home              | main/home.html                        | 홈화면          |
-| main      | '/about/'                                  | about             | main/about.html                       | 소개화면               |
-
-
-- accounts
-
-| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
-|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-| accounts  | 'signup/'                                  | signup          | accounts/signup.html                |회원가입         |
+| accounts  | 'signup/'                                  | signup          | accounts/signup.html                    |회원가입         |
 | accounts  | 'login/'                                   | login             | accounts/login.html                   |로그인           |
 | accounts  | 'logout/'                                  | logout            | accounts/logout.html                  |로그아웃         |
-| accounts  | 'profile/'                                 | profile           | accounts/profile.html                 | 비밀번호변경기능 / <br>프로필 수정/ 닉네임추가 |
+
 
 
 - blog
 
-
+  
 | App       | URL                                        | Views Function    | HTML File Name                        | Note           |
 |-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-| blog      | 'blog/'                                    | blog_list          | blog/blog_list.html                        |갤러리형 게시판 메인 화면  |
-| blog      | 'blog/<int:pk>/'                           | blog_detail        | blog/blog_detail.html                        |상세 포스트 화면    |
-| blog      | 'blog/write/'                              | blog_create        | blog/blog_create.html                       | 카테고리 지정, 사진업로드,<br> 게시글 조회수 반영|
-| blog      | 'blog/edit/<int:pk>/'                      | blog_update       | blog/blog_update.html                        | 게시물목록보기 |
-| blog      | 'blog/delete/<int:pk>/'                    | blog_delete       | blog/delete.html                      | 삭제 화면      |
-| blog      | 'blog/search/'                             | search            | blog/search.html                      | 주제와 카테고리에 따라 검색,<br> 시간순에 따라 정렬|
-| blog      | 'post/<int:post_pk>/comment/'              | comment_new       | blog/comment_form.html                | 댓글 입력 폼     |
-| blog      | 'post/<int:post_pk>/comment/<br><int:parent_pk>/' | reply_new    | blog/comment_form.html                | 대댓글 폼      |
-| blog      | 'post/<int:pk>/like/'                      | like_post         | blog/post.html                        |좋아요를 누르면 blog/post로 Redirect됨|
-| blog      | 'comment/<int:pk>/update/'                 | comment_update    | blog/comment_form.html                |댓글 업데이터 경로   |
-| blog      | 'comment/<int:pk>/delete/'                 | comment_delete    | blog/comment_<br>confirm_delete.html      |댓글 삭제 폼    |
+blog	|'blog/'					|PostList.as_view()		|blog/post_list.html		|게시판 메인 화면|
+blog	|'blog/int:pk/'					|PostDetail.as_view()		|blog/post_detail.html		|상세 포스트 화면|
+blog	|'blog/category/str:slug/'			|category_page			|blog/category_page.html	|카테고리별 포스트 보기|
+blog	|'blog/tag/str:slug/'				|tag_page			|blog/tag_page.html		|태그별 포스트 보기|
+blog	|'blog/create_post/'				|PostCreate.as_view()		|blog/post_form.html		|포스트 작성, 카테고리 지정, 사진 업로드|
+blog	|'blog/update_post/int:pk/'			|PostUpdate.as_view()		|blog/post_update.html		|포스트 수정|
+blog	|'blog/delete_post/int:pk/'			|PostDelete.as_view()		|blog/post_confirm_delete.html	|포스트 삭제|
+blog	|'blog/search/str:q/'				|PostSearch.as_view()		|blog/post_search.html		|검색 기능|
+blog	|'post/int:pk/new_comment/'			|new_comment			|blog/comment_form.html		|댓글 입력 폼|
+blog	|'post/update_comment/int:pk/'			|CommentUpdate.as_view()	|blog/comment_update.html	|댓글 업데이트|
+blog	|'post/delete_comment/int:pk/'			|delete_comment 		|blog/comment_confirm_delete.html|댓글 삭제|
+blog	|'change_password/'				|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
+blog	|'profile/int:pk/'				|profile			|blog/profile.html		|프로필 보기|
+blog	|'update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
+blog	|'create_recomment/int:pk/'			|create_recomment		|blog/recomment_form.html	|대댓글 작성 |
 
 
 ## 3. 요구사항 명세와 기능 명세
