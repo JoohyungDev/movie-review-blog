@@ -3,7 +3,7 @@ from pathlib import Path
 from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdown
-from django.conf import settings
+from sorl.thumbnail import ImageField
 
 
 class Category(models.Model):
@@ -93,6 +93,18 @@ class Comment(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nickname = models.CharField(max_length=64)
     profile_photo = models.ImageField(blank=True)
+
+
+class Photo(models.Model):
+    image = models.ImageField(upload_to="blog/images/thumbnail/%Y/%m/%d/")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_public = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "{} {} {}".format(self.user.username, self.content, self.is_public)

@@ -1,10 +1,11 @@
 {% extends 'blog/base_full_width.html' %}
 {% load crispy_forms_tags %}
+{% load thumbnail %}
 {% block main %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-5">
-            <div class="card shadow-sm mb-5 mt-5">
+        <div class="col-md-8">
+            <div class="card shadow-sm my-5">
                 <div class="card-body">
                     <h1 class="card-title text-center">프로필</h1>
                     <hr/>
@@ -14,19 +15,19 @@
                             {{ form | crispy }}
                         </div>
                         <div class="text-center my-3">
-                            {% if profile_user.profile.profile_photo %}
-                                <img class="rounded-circle" src="{{profile_user.profile.profile_photo.url}}" width="200"> <br>
+                            {% if user.profile.profile_photo %}
+                                <img class="rounded-circle" src="{{ user.profile.profile_photo.url }}" width="200" alt="프로필 사진"> <br>
                             {% else %}
-                                <img class="rounded-circle" src="https://picsum.photos/seed/{{ profile_user.pk }}/200" width="200"> <br>
+                                <img class="rounded-circle" src="https://picsum.photos/seed/{{ user.pk }}/200" width="200" alt="기본 프로필 사진"> <br>
                             {% endif %}
                         </div>
                         <div class="text-center">
-                            {% if profile_user.profile.nickname %}
-                                <h2>{{profile_user.profile.nickname}}</h2>
+                            {% if user.profile.nickname %}
+                                <h3>{{ user.profile.nickname }}</h3>
                             {% endif %}
-                            <h3>아이디: {{profile_user.username}}</h3>
-                            {% if profile_user.first_name %}
-                                <h4>이름: {{profile_user.first_name}} {{profile_user.last_name}}</h4>
+                            <h3>아이디: {{ user.username }}</h3>
+                            {% if user.first_name %}
+                                <h4>이름: {{ user.first_name }} {{ user.last_name }}</h4>
                             {% endif %}
                         </div>
                         <div class="text-center mt-4">
@@ -35,9 +36,17 @@
                     </form>
                 </div>
             </div>
+            <div class="row mb-5 text-center">
+                {% for photo in photos %}
+                <div class="col-6 col-md-4">
+                    {% thumbnail photo.image "250x250" crop="center" as im %}
+                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="사용자 사진">
+                    {% endthumbnail %}
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        <div class="mt-5"></div>
-        <div class="mt-5"></div>
     </div>
 </div>
 {% endblock %}
+

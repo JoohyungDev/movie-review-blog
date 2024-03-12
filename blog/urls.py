@@ -20,7 +20,7 @@ urlpatterns = [
     ),
     path(
         "profile/<int:pk>/",
-        views.ProfileDetail.as_view(),
+        views.profile,
         name="profile",
     ),
     path(

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "mathfilters",
+    "sorl.thumbnail",
 ]
 
 MIDDLEWARE = [

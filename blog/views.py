@@ -23,6 +23,9 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from django.views import View
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.contrib import messages
 
 
 class PostList(ListView):
@@ -89,7 +92,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
                     self.object.tags.add(tag)
             return response
         else:
-            return redirect("/blog/")
+            return redirect(reverse("blog_main_page"))
 
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
@@ -246,17 +249,29 @@ class ChangePassword(PasswordChangeView):
     success_url = reverse_lazy("post_list")
 
 
-class ProfileDetail(LoginRequiredMixin, DeleteView):
-    context_object_name = "profile_user"
-    model = User
-    template_name = "blog/profile.html"
+# class ProfileDetail(LoginRequiredMixin, DeleteView):
+#     context_object_name = "profile_user"
+#     model = User
+#     template_name = "blog/profile.html"
 
-    def dispatch(self, request, *args, **kwargs):
-        profile_user = self.get_object()
-        if request.user == profile_user:
-            return super().dispatch(request, *args, **kwargs)
-        else:
-            raise PermissionDenied
+#     def dispatch(self, request, *args, **kwargs):
+#         profile_user = self.get_object()
+#         if request.user == profile_user:
+#             return super().dispatch(request, *args, **kwargs)
+#         else:
+#             raise PermissionDenied
+
+
+@login_required
+def profile(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.user == user:
+        photos = user.photo_set.filter(is_public=True)[:20]
+        context = {"profile_user": user, "photos": photos}
+        return render(request, "blog/profile.html", context)
+    else:
+        messages.error(request, "접근할 수 없는 프로필입니다.")
+        return redirect(reverse("post_list"))
 
 
 class ProfileUpdate(LoginRequiredMixin, View):

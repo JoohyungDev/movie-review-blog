@@ -1,6 +1,6 @@
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
-from .models import Post, Category, Tag, Comment, Profile
+from .models import Post, Category, Tag, Comment, Profile, Photo
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
@@ -25,7 +25,7 @@ admin.site.register(Comment)
 
 class ProfileInline(admin.StackedInline):
     model = Profile
-    con_delete = False
+    can_delete = False
 
 
 class CustomUserAdmin(UserAdmin):
@@ -34,3 +34,6 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+
+
+admin.site.register(Photo)
