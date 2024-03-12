@@ -17,7 +17,7 @@ from django.core.exceptions import PermissionDenied
 from django.utils.text import slugify
 from django.urls import reverse_lazy
 from django.db.models import Q
-from .forms import CommentForm, UserForm, ProfileForm
+from .forms import CommentForm, UserForm, ProfileForm, ReCommentForm
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -49,6 +49,7 @@ class PostDetail(DetailView):
         context["categories"] = Category.objects.all()
         context["no_category_post_count"] = Post.objects.filter(category=None).count()
         context["comment_form"] = CommentForm
+        context["recomment_form"] = ReCommentForm()
         return context
 
     def get_object(self, queryset=None):
@@ -243,6 +244,18 @@ def delete_comment(request, pk):
         return redirect(post.get_absolute_url())
     else:
         raise PermissionDenied
+
+
+def create_recomment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    filled_form = ReCommentForm(request.POST)
+
+    if filled_form.is_valid():
+        recomment = filled_form.save(commit=False)
+        recomment.comment_id = request.POST.get("comment")
+        recomment.save()
+
+    return redirect("post_detail", pk)
 
 
 class ChangePassword(PasswordChangeView):

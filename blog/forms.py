@@ -1,4 +1,4 @@
-from .models import Comment, Profile
+from .models import Comment, Profile, ReComment
 from django import forms
 from django.contrib.auth.models import User
 
@@ -7,6 +7,12 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ("content",)
+
+
+class ReCommentForm(forms.ModelForm):
+    class Meta:
+        model = ReComment
+        fields = ("content", "comment")
 
 
 class UserForm(forms.ModelForm):

@@ -155,6 +155,25 @@
                                                 </div>
                                                 </div>
                                             </div>
+                                            <!-- Child comment -->
+                                            <form method="post" action="{% url 'create_recomment' post.pk %}">
+                                                {%csrf_token%}
+                                                {%for recom_form in recomment_form%}
+                                                    {%if recom_form.label != 'Comment' %}
+                                                    {{recom_form.label}} : {{recom_form}}
+                                                    {%endif%}
+                                                {%endfor%}
+                                                <input type="hidden" name="comment" value="{{ comment.pk }}">
+                                                <input type="submit">
+                                            </form>
+                                        </div>
+                                        <!-- Child comment view -->
+                                        <div class="ms-3">
+                                            <div class="ms-5">
+                                            {%for recom in comment.recomment_set.all%}
+                                            &nbsp ↪{{recom}}<br>
+                                            {%endfor%}
+                                            </div>
                                         </div>
                                         {% endfor %}
                                 </div>
@@ -164,6 +183,3 @@
                     </section>
                 </div>
     {% endblock %}
-
-{% block delete %}
-{% endblock %}    

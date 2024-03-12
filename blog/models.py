@@ -108,3 +108,13 @@ class Photo(models.Model):
 
     def __str__(self):
         return "{} {} {}".format(self.user.username, self.content, self.is_public)
+
+
+class ReComment(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    content = models.CharField("대댓글", max_length=150)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.content
