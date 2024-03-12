@@ -12,7 +12,7 @@ from django.views.generic import (
     DeleteView,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post, Category, Tag, Comment
+from .models import Post, Category, Tag, Comment, ReComment
 from django.core.exceptions import PermissionDenied
 from django.utils.text import slugify
 from django.urls import reverse_lazy
@@ -247,7 +247,6 @@ def delete_comment(request, pk):
 
 
 def create_recomment(request, pk):
-    post = get_object_or_404(Post, pk=pk)
     filled_form = ReCommentForm(request.POST)
 
     if filled_form.is_valid():
@@ -257,6 +256,21 @@ def create_recomment(request, pk):
         recomment.save()
 
     return redirect("post_detail", pk)
+
+
+class ReCommentUpdate(LoginRequiredMixin, UpdateView):
+    model = ReComment
+    form_class = ReCommentForm
+
+    def get_success_url(self):
+        post_pk = self.object.comment.post.pk
+        return reverse("post_detail", kwargs={"pk": post_pk})
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user == self.get_object().author:
+            return super(ReCommentUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
 
 
 class ChangePassword(PasswordChangeView):

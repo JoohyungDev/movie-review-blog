@@ -160,9 +160,14 @@
                                         <div class="ms-3">
                                             <div class="ms-5">
                                             <hr/>
-                                            {%for recom in comment.recomment_set.all%}
+                                            {%for recom in comment.recomment_set.iterator%}
                                             &nbsp  ↪{{recom.author}}<small> {{recom.created_at}} </small> <br>
-                                            &nbsp {{recom}}  <hr/><br>
+                                            &nbsp {{recom}}  
+                                                {% if request.user == recom.author %}
+                                                    <a type="button" class="btn btn-sm float-end" href="/blog/update_recomment/{{ recom.pk }}/" 
+                                                    id="recomment-{{ recom.pk }}-update-btn" >수정</a>
+                                                {% endif %}
+                                            <hr/><br>
                                             {%endfor%}
                                             </div>
                                         </div>

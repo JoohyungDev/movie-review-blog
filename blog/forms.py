@@ -12,7 +12,7 @@ class CommentForm(forms.ModelForm):
 class ReCommentForm(forms.ModelForm):
     class Meta:
         model = ReComment
-        fields = ("content", "comment")
+        fields = ("content",)
 
 
 class UserForm(forms.ModelForm):

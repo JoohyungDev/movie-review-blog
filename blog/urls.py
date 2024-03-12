@@ -33,4 +33,9 @@ urlpatterns = [
         views.create_recomment,
         name="create_recomment",
     ),
+    path(
+        "update_recomment/<int:pk>/",
+        views.ReCommentUpdate.as_view(),
+        name="recomment_update",
+    ),
 ]
