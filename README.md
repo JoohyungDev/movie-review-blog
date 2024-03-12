@@ -116,6 +116,9 @@ graph TD;
         searchPost[게시글 검색]
         uploadPhoto[사진 업로드]
         viewCount[조회수 기능]
+        uploadFile[파일 업로드]
+        categorySelectAndView[카테고리 선택 및 조회]
+        tagSelectAndView[태그 선택 및 조회]
     end
 
     subgraph commentFeatures [댓글 관련 기능]
@@ -134,7 +137,8 @@ graph TD;
     commentCRUD --> commentFeatures;
 
     classDef app fill:#f9f,stroke:#333,stroke-width:2px;
-    class accounts,blog app;
+    class accounts,blog,postFeatures,commentFeatures app;
+
 
 
 ```
