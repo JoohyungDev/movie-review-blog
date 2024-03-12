@@ -273,6 +273,17 @@ class ReCommentUpdate(LoginRequiredMixin, UpdateView):
             raise PermissionDenied
 
 
+@login_required
+def delete_recomment(request, pk):
+    recomment = get_object_or_404(ReComment, pk=pk)
+    post = recomment.comment.post
+    if request.user == recomment.author:
+        recomment.delete()
+        return redirect(post.get_absolute_url())
+    else:
+        raise PermissionDenied
+
+
 class ChangePassword(PasswordChangeView):
     success_url = reverse_lazy("post_list")
 

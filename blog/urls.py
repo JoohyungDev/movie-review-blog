@@ -38,4 +38,5 @@ urlpatterns = [
         views.ReCommentUpdate.as_view(),
         name="recomment_update",
     ),
+    path("delete_recomment/<int:pk>/", views.delete_recomment, name="delete_recomment"),
 ]
