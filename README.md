@@ -457,7 +457,8 @@ gantt
 IntegrityError at /post/new/ NOT NULL constraint failed: blog_post.author_id
 ```
 
-게시글 생성 view를 만들고 나서 해당 URL로 폼을 작성하고 저장을 하니 위와 같은 오류가 발생하였다. CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증하는 함수를 추가하여 author를 자동으로 추가하게끔 작성하여 해결하였다.
+게시글 생성 view를 만들고 나서 해당 URL로 폼을 작성하고 저장을 하니 위와 같은 오류가 발생하였다. <br>
+CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증하는 함수를 추가하여 author를 자동으로 추가하게끔 작성하여 해결하였다.
 ```
     def form_valid(self, form):
         current_user = self.request.user
@@ -472,7 +473,7 @@ IntegrityError at /post/new/ NOT NULL constraint failed: blog_post.author_id
 ```
 UNIQUE constraint failed: blog_tag.slug
 ```
-게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생한다. 
+게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생한다. <br>
 일반적인 경우에서는 일어나지 않을 오류이지만 본인과 같은 실수를 예방하고자 view에서 PostCreate 클래스의 form_valid라는 폼 유효성 함수 내부에 다음과 같은 코드를 추가하여 해결하였다.
 ```
 tags_str = tags_str.strip("; ")
@@ -501,7 +502,18 @@ class PostDelete(DeleteView):
 ```
 결과적으로 삭제 버튼을 누르면 바로 삭제가 되어 지연 시간을 확실히 감소시켰다.
 
+### 7.5 django-allauth 오류
+```
+allauth.account.middleware.AccountMiddleware must be added to settings.MIDDLEWARE
+```
+django-allauth를 활용한 소셜미디어 로그인 기능을 사용하고자 하였으나 위와 같은 문제가 발생하였다. <br>
+해석해보자면 settings.py 내부의 MIDDLEWARE 부분에 "allauth.account.middleware.AccountMiddleware"를 추가하여 간단히 해결하였다.
 
+### 7.6 DB 오류
+```
+django.db.migrations.exceptions.InconsistentMigrationHistory: Migration socialaccount.0001_initial is applied before its dependency sites.0001_initial
+on database 'default'.
+```
 
 
 ## 8. 개발하며 느낀점
