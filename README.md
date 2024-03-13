@@ -1,4 +1,4 @@
-# 취미 블로그
+<img width="625" alt="image" src="https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/3f916c6a-ad05-465f-a67e-0624947187b2"><img width="1280" alt="image" src="https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/6675de99-d36c-4e18-b606-7fbfcf95ff15"># 취미 블로그
 ## 1. 목표와 기능
 ### 1.1 목표
 - 다양한 기능 구현
@@ -267,10 +267,10 @@ gantt
         </tr>
         <tr>
             <td>
-		<img src="samples/01_메인페이지.png" width="100%">
+		<img src="samples/wireframe/01_메인페이지.png" width="100%">
             </td>
             <td>
-                <img src="samples/02_세부페이지.png" width="100%">
+                <img src="samples/wireframe/02_세부페이지.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -279,10 +279,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/03_카테고리 조회.png" width="100%">
+                <img src="samples/wireframe/03_카테고리 조회.png" width="100%">
             </td>
             <td>
-                <img src="samples/04_태그 조회.png" width="100%">
+                <img src="samples/wireframe/04_태그 조회.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -291,10 +291,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/05_포스트 작성.png" width="100%">
+                <img src="samples/wireframe/05_포스트 작성.png" width="100%">
             </td>
             <td>
-                <img src="samples/06_포스트 수정.png" width="100%">
+                <img src="samples/wireframe/06_포스트 수정.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -303,10 +303,10 @@ gantt
         </tr>
         <tr>
             <td>
-	        <img src="samples/07_댓글.png" width="100%">
+	        <img src="samples/wireframe/07_댓글.png" width="100%">
             </td>
             <td>
-                <img src="samples/08_로그인.png" width="100%">
+                <img src="samples/wireframe/08_로그인.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -315,10 +315,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/09_회원가입.png" width="100%">
+                <img src="samples/wireframe/09_회원가입.png" width="100%">
             </td>
 	    <td>
-                <img src="samples/10_아이디찾기.png" width="100%">
+                <img src="samples/wireframe/10_아이디찾기.png" width="100%">
             </td>
         </tr>
 	<tr>
@@ -327,10 +327,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/11_비밀번호찾기.png" width="100%">
+                <img src="samples/wireframe/11_비밀번호찾기.png" width="100%">
             </td>
 	    <td>
-                <img src="samples/12_비밀번호 변경.png" width="100%">
+                <img src="samples/wireframe/12_비밀번호 변경.png" width="100%">
             </td>
         </tr>
  	<tr>
@@ -339,10 +339,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/13_프로필.png" width="100%">
+                <img src="samples/wireframe/13_프로필.png" width="100%">
             </td>
 	    <td>
-                <img src="samples/14_프로필 수정.png" width="100%">
+                <img src="samples/wireframe/14_프로필 수정.png" width="100%">
             </td>
         </tr>
     </tbody>
@@ -352,75 +352,63 @@ gantt
 <table>
     <tbody>
         <tr>
-            <td>메인</td>
+            <td>메인상단</td>
+            <td>메인하단</td>
+        </tr>
+        <tr>
+            <td>
+		<img src="samples/product/메인상단.png" width="100%">
+            </td>
+            <td>
+                <img src="samples/product/메인하단.png" width="100%">
+            </td>
+        </tr>
+        <tr>
             <td>세부페이지</td>
+            <td>카테고리 조회</td>	
         </tr>
         <tr>
             <td>
-		<img src="#" width="100%">
+                <img src="samples/product/세부 페이지.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
+                <img src="카테고리 조회.png" width="100%">
             </td>
         </tr>
         <tr>
-            <td>카테고리 조회</td>
-            <td>태그 조회</td>	
+            <td>태그 조회</td>
+            <td>게시글 작성</td>
         </tr>
         <tr>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/태그 조회.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/게시글 작성.png" width="100%">
             </td>
         </tr>
         <tr>
-            <td>포스트 작성</td>
-            <td>포스트 수정</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="#" width="100%">
-            </td>
-            <td>
-                <img src="#" width="100%">
-            </td>
-        </tr>
-        <tr>
+           <td>게시글 수정</td>
            <td>댓글</td>
-           <td>로그인</td>
         </tr>
         <tr>
             <td>
-	        <img src="#" width="100%">
+	        <img src="samples/product/게시글 수정.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/댓글.png" width="100%">
             </td>
         </tr>
         <tr>
+            <td>로그인</td>
             <td>회원가입</td>
-            <td>아이디찾기</td>
         </tr>
         <tr>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/로그인.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
-            </td>
-        </tr>
-	<tr>
-            <td>비밀번호찾기</td>
-            <td>비밀번호 변경</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="#" width="100%">
-            </td>
-	    <td>
-                <img src="#" width="100%">
+                <img src="samples/product/회원가입.png" width="100%">
             </td>
         </tr>
  	<tr>
@@ -429,10 +417,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/프로필.png" width="100%">
             </td>
 	    <td>
-                <img src="#" width="100%">
+                <img src="samples/product/프로필 수정.png" width="100%">
             </td>
         </tr>
     </tbody>
