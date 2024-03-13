@@ -285,8 +285,8 @@ gantt
             </td>
         </tr>
         <tr>
-            <td>포스트 작성</td>
-            <td>포스트 수정</td>
+            <td>게시글 작성</td>
+            <td>게시글 수정</td>
         </tr>
         <tr>
             <td>
@@ -310,7 +310,7 @@ gantt
         </tr>
         <tr>
             <td>회원가입</td>
-            <td>아이디찾기</td>
+            <td>아이디 찾기</td>
         </tr>
         <tr>
             <td>
@@ -321,7 +321,7 @@ gantt
             </td>
         </tr>
 	<tr>
-            <td>비밀번호찾기</td>
+            <td>비밀번호 찾기</td>
             <td>비밀번호 변경</td>
         </tr>
         <tr>
@@ -351,7 +351,7 @@ gantt
 <table>
     <tbody>
         <tr>
-            <td>메인상단</td>
+            <td>메인 상단</td>
             <td>메인하단</td>
         </tr>
         <tr>
@@ -408,6 +408,18 @@ gantt
             </td>
             <td>
                 <img src="samples/product/회원가입.png" width="100%">
+            </td>
+        </tr>
+	 <tr>
+            <td>비밀번호 찾기</td>
+            <td>비밀번호 수정</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="#" width="100%">
+            </td>
+	    <td>
+                <img src="samples/product/비밀번호 찾기.png" width="100%">
             </td>
         </tr>
  	<tr>
