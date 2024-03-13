@@ -268,54 +268,70 @@ gantt
         </tr>
         <tr>
             <td>
-		<img src="samples/01_대문.png" width="100%">
+		<img src="samples/01_메인페이지.png" width="100%">
             </td>
             <td>
                 <img src="samples/02_세부페이지.png" width="100%">
             </td>
         </tr>
         <tr>
-            <td>About 페이지</td>
-            <td>글쓰기</td>
+            <td>카테고리 조회</td>
+            <td>태그 조회</td>	
         </tr>
         <tr>
             <td>
-                <img src="samples/03_about페이지.png" width="100%">
+                <img src="samples/03_카테고리 조회.png" width="100%">
             </td>
             <td>
-                <img src="samples/04_포스트 작성.png" width="100%">
+                <img src="samples/04_태그 조회.png" width="100%">
             </td>
         </tr>
         <tr>
-            <td>수정</td>
+            <td>포스트 작성</td>
+            <td>포스트 수정</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="samples/05_포스트 작성.png" width="100%">
+            </td>
+            <td>
+                <img src="samples/06_포스트 수정.png" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td>댓글</td>
             <td>로그인</td>
         </tr>
         <tr>
             <td>
-                <img src="samples/05_포스트 수정.png" width="100%">
+	        <img src="samples/07_댓글.png" width="100%">
             </td>
             <td>
-                <img src="samples/06_로그인.png" width="100%">
-            </td>
-        </tr>
-        <tr>
-            <td>비밀번호찾기</td>
-            <td>아이디찾기</td>
-        </tr>
-        <tr>
-            <td>
-	        <img src="samples/07_비밀번호찾기.png" width="100%">
-            </td>
-            <td>
-                <img src="samples/08_아이디찾기.png" width="100%">
+                <img src="samples/08_로그인.png" width="100%">
             </td>
         </tr>
         <tr>
             <td>회원가입</td>
+            <td>아이디찾기 / 비밀번호찾기</td>
         </tr>
         <tr>
             <td>
                 <img src="samples/09_회원가입.png" width="100%">
+            </td>
+	    <td>
+                <img src="samples/10_아이디찾기.png" width="100%">
+            </td>
+        </tr>
+	<tr>
+            <td>프로필</td>
+            <td>프로필 수정</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="samples/12_프로필.png" width="100%">
+            </td>
+	    <td>
+                <img src="samples/13_프로필 수정.png" width="100%">
             </td>
         </tr>
     </tbody>
