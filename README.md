@@ -69,6 +69,7 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 #### Blog 앱
 
 - blog
+
 | App       | URL                                        | Views Function               | HTML File Name                | Note           |
 |-----------|--------------------------------------------|------------------------------|-------------------------------|----------------|
 | blog	    | 'blog/'				         | PostList.as_view()		| blog/post_list.html		| 메인페이지      |
