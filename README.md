@@ -350,7 +350,95 @@ gantt
 </table>
 
 ### 5.2 화면 설계
+<table>
+    <tbody>
+        <tr>
+            <td>메인</td>
+            <td>세부페이지</td>
+        </tr>
+        <tr>
+            <td>
+		<img src="#" width="100%">
+            </td>
+            <td>
+                <img src="#" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td>카테고리 조회</td>
+            <td>태그 조회</td>	
+        </tr>
+        <tr>
+            <td>
+                <img src="#" width="100%">
+            </td>
+            <td>
+                <img src="#" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td>포스트 작성</td>
+            <td>포스트 수정</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="#" width="100%">
+            </td>
+            <td>
+                <img src="#" width="100%">
+            </td>
+        </tr>
+        <tr>
+           <td>댓글</td>
+           <td>로그인</td>
+        </tr>
+        <tr>
+            <td>
+	        <img src="#" width="100%">
+            </td>
+            <td>
+                <img src="#" width="100%">
+            </td>
+        </tr>
+        <tr>
+            <td>회원가입</td>
+            <td>아이디찾기</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="#" width="100%">
+            </td>
+            <td>
+                <img src="#" width="100%">
+            </td>
+        </tr>
+	<tr>
+            <td>비밀번호찾기</td>
+            <td>비밀번호 변경</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="#" width="100%">
+            </td>
+	    <td>
+                <img src="#" width="100%">
+            </td>
+        </tr>
+ 	<tr>
+            <td>프로필</td>
+            <td>프로필 수정</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="#" width="100%">
+            </td>
+	    <td>
+                <img src="#" width="100%">
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ## 6. 데이터베이스 모델링(ERD)
-![ERD](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/b44fa854-e496-4a43-9f1b-047fbb22574b)
+![ERD](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/86d96a27-c9a7-4426-a535-ba372265b4d9)
 
