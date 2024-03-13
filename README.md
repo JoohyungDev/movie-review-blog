@@ -90,7 +90,7 @@ blog	|'blog/update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_upd
 blog	|'blog/change_password/'			|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
 
 
-## 3. 요구사항 명세와 기능 명세
+## 3. 기능 명세
 ```mermaid
 graph TD;
     subgraph accounts [Accounts 앱]
@@ -312,7 +312,7 @@ gantt
         </tr>
         <tr>
             <td>회원가입</td>
-            <td>아이디찾기 / 비밀번호찾기</td>
+            <td>아이디찾기</td>
         </tr>
         <tr>
             <td>
@@ -323,15 +323,27 @@ gantt
             </td>
         </tr>
 	<tr>
+            <td>비밀번호찾기</td>
+            <td>비밀번호 변경</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="samples/11_비밀번호찾기.png" width="100%">
+            </td>
+	    <td>
+                <img src="samples/12_비밀번호 변경.png" width="100%">
+            </td>
+        </tr>
+ 	<tr>
             <td>프로필</td>
             <td>프로필 수정</td>
         </tr>
         <tr>
             <td>
-                <img src="samples/12_프로필.png" width="100%">
+                <img src="samples/13_프로필.png" width="100%">
             </td>
 	    <td>
-                <img src="samples/13_프로필 수정.png" width="100%">
+                <img src="samples/14_프로필 수정.png" width="100%">
             </td>
         </tr>
     </tbody>
