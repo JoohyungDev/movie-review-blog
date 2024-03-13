@@ -514,6 +514,26 @@ django-allauth를 활용한 소셜미디어 로그인 기능을 사용하고자 
 django.db.migrations.exceptions.InconsistentMigrationHistory: Migration socialaccount.0001_initial is applied before its dependency sites.0001_initial
 on database 'default'.
 ```
+allauth를 세팅하며 settings.py를 수정중 문제가 발생하였다. 다른 앱들은 정상적으로 추가가 되지만 django.contrib.sites 앱을 후에 추가해주어 문제가 발생하였다. <br>
+allauth를 활용한 소셜 로그인에는 sites를 admin페이지에서 수정해야 하는데 선언이 초기에 안되어 있었다. <br>
+결국, 너무 늦게 선언을 하여 에러가 발생한 것이다. <br>
+구글링 결과, 여러 해결방안이 나왔지만 해당되지 않았다. 따라서 migrations 폴더 전체와 db.sqlite3를 날려버리고 다시 재선언하였다.
+#### 해결 순서
+1. 해당 user model을 설정한 app의 migrations 폴더 제거
+2. db.sqlite3 파일 삭제
+3. python manage.py makemigrations <app 이름>
+4. python manage.py migrate <app 이름>
+5. python manage.py createsuperuser
+
+### 7.7 WSGI 오류
+```
+'WSGIRequest' object has no attribute 'author'
+```
+포스트 상세 페이지에 댓글 기능을 추가하던 중, 위와 같은 오류가 발생했다. <br>
+해석해보면 기본적으로 WSGIRequest 객체에는 author 속성이 없어서 발생하고 있다. <br>
+댓글 생성 함수인 create_comment 내부 comment.author = request.author 구문을 comment.author = request.user로 수정하여 해결하였다.
+
+
 
 
 ## 8. 개발하며 느낀점
