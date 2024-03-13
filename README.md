@@ -442,23 +442,23 @@ gantt
 
 ## 7. 트러블슈팅 및 개선
 ### 7.1 관리자 화면 레이아웃 오류
-관리자 페이지의 기능들은 정상 작동하지만 레이아웃이 정상 출력되지 않는 오류가 발생하였다.
+관리자 페이지의 기능들은 정상 작동하지만 레이아웃이 정상 출력되지 않는 오류가 발생하였습니다.
 ![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/1a5f4c97-eeea-4399-9a87-fc20b53b58a6)
 ![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/beff7897-153e-451c-a0b5-0fdc2576ea7b)
 
-조사 결과, 해결책은 2가지였다. 
+조사 결과, 해결책은 2가지가 있었습니다. 
 1. Django 버전 다운그레이드
-   - 5.0.3 -> 3.2.14로 낮춰서 해결이 가능하였다.
+   - 5.0.3 -> 3.2.14로 낮춰서 해결이 가능합니다.
 2. 캐시 제거
-   - 관리자 화면에서 CTRL + SHIFT + R을 눌러 캐시를 제거하여 해결하였다.
+   - 관리자 화면에서 CTRL + SHIFT + R을 눌러 캐시를 제거하여 해결이 가능합니다.
 
 ### 7.2 IntegrityError 오류
 ```
 IntegrityError at /post/new/ NOT NULL constraint failed: blog_post.author_id
 ```
 
-게시글 생성 view를 만들고 나서 해당 URL로 폼을 작성하고 저장을 하니 위와 같은 오류가 발생하였다. <br>
-CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증하는 함수를 추가하여 author를 자동으로 추가하게끔 작성하여 해결하였다.
+게시글 생성 view를 만들고 나서 해당 URL로 폼을 작성하고 저장을 하니 위와 같은 오류가 발생하였습니다. <br>
+CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증하는 함수를 추가하여 author를 자동으로 추가하게끔 작성하여 해결하였습니다.
 ```
     def form_valid(self, form):
         current_user = self.request.user
@@ -473,15 +473,15 @@ CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증�
 ```
 UNIQUE constraint failed: blog_tag.slug
 ```
-게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생한다. <br>
-일반적인 경우에서는 일어나지 않을 오류이지만 본인과 같은 실수를 예방하고자 view에서 PostCreate 클래스의 form_valid라는 폼 유효성 함수 내부에 다음과 같은 코드를 추가하여 해결하였다.
+게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생하였습니다. <br>
+일반적인 경우에서는 일어나지 않을 오류이지만 본인과 같은 실수를 예방하고자 view에서 PostCreate 클래스의 form_valid라는 폼 유효성 함수 내부에 다음과 같은 코드를 추가하여 해결하였습니다.
 ```
 tags_str = tags_str.strip("; ")
 ```
 
 ### 7.4 게시글 삭제 관련 로직 단순화
 ![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/50668c85-b20e-4639-8265-eddf2aa380b9)
-기존 코드는 게시글 세부 화면에서 삭제를 누르면 다른 페이지로 이동하여 삭제를 진행하였는데 이 과정에서 불편함을 느꼈으며 다음과 같이 수정하였다. 
+기존 코드는 게시글 세부 화면에서 삭제를 누르면 다른 페이지로 이동하여 삭제를 진행하였는데 이 과정에서 불편함을 느꼈으며 다음과 같이 수정하였습니다. 
 ```
 <form class="post-form d-inline" action="{% url 'post_delete' post.pk %}"
 method="post">
@@ -491,7 +491,7 @@ method="post">
     </a>
 </form>
 ```
-확인 버튼을 form 태그로 감싸고 post_delete라는 이름의 삭제 클래스 URL과 연결시켰다. 그 다음, views의 삭제 클래스 내부 get함수를 오버라이딩 하였다.
+확인 버튼을 form 태그로 감싸고 post_delete라는 이름의 삭제 클래스 URL과 연결 시켰습니다. 그 다음, views의 삭제 클래스 내부 get함수를 오버라이딩 하였습니다.
 ```
 class PostDelete(DeleteView):
     model = Post
@@ -500,24 +500,24 @@ class PostDelete(DeleteView):
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
 ```
-결과적으로 삭제 버튼을 누르면 바로 삭제가 되어 지연 시간을 확실히 감소시켰다.
+결과적으로 삭제 버튼을 누르는 즉시 삭제가 되며, 지연 시간을 50%이상 감소시켰습니다.
 
 ### 7.5 django-allauth 오류
 ```
 allauth.account.middleware.AccountMiddleware must be added to settings.MIDDLEWARE
 ```
-django-allauth를 활용한 소셜미디어 로그인 기능을 사용하고자 하였으나 위와 같은 문제가 발생하였다. <br>
-해석해보자면 settings.py 내부의 MIDDLEWARE 부분에 "allauth.account.middleware.AccountMiddleware"를 추가하여 간단히 해결하였다.
+django-allauth를 활용한 소셜미디어 로그인 기능을 사용하고자 하였으나 위와 같은 문제가 발생하였습니다. <br>
+settings.py 내부의 MIDDLEWARE 부분에 "allauth.account.middleware.AccountMiddleware"를 추가하여 간단히 해결하였습니다.
 
 ### 7.6 DB 오류
 ```
 django.db.migrations.exceptions.InconsistentMigrationHistory: Migration socialaccount.0001_initial is applied before its dependency sites.0001_initial
 on database 'default'.
 ```
-allauth를 세팅하며 settings.py를 수정중 문제가 발생하였다. 다른 앱들은 정상적으로 추가가 되지만 django.contrib.sites 앱을 후에 추가해주어 문제가 발생하였다. <br>
-allauth를 활용한 소셜 로그인에는 sites를 admin페이지에서 수정해야 하는데 선언이 초기에 안되어 있었다. <br>
-결국, 너무 늦게 선언을 하여 에러가 발생한 것이다. <br>
-구글링 결과, 여러 해결방안이 나왔지만 해당되지 않았다. 따라서 migrations 폴더 전체와 db.sqlite3를 날려버리고 다시 재선언하였다.
+allauth를 세팅하며 settings.py를 수정중 문제가 발생하였습니다. 다른 앱들은 정상적으로 추가가 되지만 django.contrib.sites 앱을 후에 추가해주어 문제가 발생하였습니다. <br>
+allauth를 활용한 소셜 로그인에는 sites를 admin페이지에서 수정해야 하는데 선언이 초기에 안되어 있었습니다. <br>
+결국, 너무 늦게 선언을 하여 에러가 발생한 것입니다. <br>
+조사 결과, 여러 해결방안이 나왔지만 해당되지 않았기에 migrations 폴더 전체와 db.sqlite3를 날려버리고 다시 재선언하였습니다.
 #### 해결 순서
 1. 해당 user model을 설정한 app의 migrations 폴더 제거
 2. db.sqlite3 파일 삭제
@@ -529,13 +529,13 @@ allauth를 활용한 소셜 로그인에는 sites를 admin페이지에서 수정
 ```
 'WSGIRequest' object has no attribute 'author'
 ```
-포스트 상세 페이지에 댓글 기능을 추가하던 중, 위와 같은 오류가 발생했다. <br>
-해석해보면 기본적으로 WSGIRequest 객체에는 author 속성이 없어서 발생하고 있다. <br>
-댓글 생성 함수인 create_comment 내부 comment.author = request.author 구문을 comment.author = request.user로 수정하여 해결하였다.
+포스트 상세 페이지에 댓글 기능을 추가하던 중, 위와 같은 오류가 발생했습니다. <br>
+해석해보면 기본적으로 WSGIRequest 객체에는 author 속성이 없어서 발생하고 있습니다. <br>
+댓글 생성 함수인 create_comment 내부 comment.author = request.author 구문을 comment.author = request.user로 수정하여 해결하였습니다.
 
 
 ## 8. 개발하며 느낀점
-기본적인 블로그 구현부터 다양한 추가 기능 구현까지, 예상했던 것보다 훨씬 많은 시간이 소요되었습니다. 하지만 사전에 작성해둔 WBS(작업 분해 구조) 덕분에 보다 효율적으로 프로젝트를 진행할 수 있었습니다. 프로젝트를 진행하며 부족함을 느끼고, 조사하는 데 많은 시간을 할애한 것은 아쉬운 점으로 남습니다. 한 오류를 해결하면 마치 마법처럼 다른 오류가 등장하고, 그 오류를 해결하면 또 다시 새로운 오류가 발생하는 연속적인 과정이 힘들었지만, 해결 후에는 그만큼 큰 만족감과 배움이 있었습니다.
+기본적인 블로그 구현부터 다양한 추가 기능 구현까지, 예상했던 것보다 훨씬 많은 시간이 소요되었습니다. 하지만 사전에 작성해둔 WBS(업무 분류 체계) 덕분에 보다 효율적으로 프로젝트를 진행할 수 있었습니다. 프로젝트를 진행하며 부족함을 느끼고, 조사하는 데 많은 시간을 할애한 것은 아쉬운 점으로 남습니다. 한 오류를 해결하면 마치 마법처럼 다른 오류가 등장하고, 그 오류를 해결하면 또 다시 새로운 오류가 발생하는 연속적인 과정이 힘들었지만, 해결 후에는 그만큼 큰 만족감과 배움이 있었습니다.
 <br>
-장고를 처음 다뤄보는 프로젝트였기에 막히는 부분이 많았지만, 결국 해결하고 이렇게 문서화를 작성하고 있다는 사실에 큰 의미를 두고 싶습니다. 이 과정을 통해 '일단 시작이 반이다'라는 말이 결코 틀리지 않음을 깨달았고, 다양한 참고 자료의 존재를 알게 되었습니다. 비교적 쉽게 문제를 해결할 수 있었던 지금의 저도, 새로운 길을 개척했던 선배 개발자들의 노력에 깊은 존경심을 느낍니다. 항상 부족함을 느끼며 겸손하게 지식을 습득하고, 어려움을 겪고 있는 다른 개발자들에게 도움을 주는 개발자가 되고자 합니다.
+장고를 처음 다뤄보는 프로젝트였기에 막히는 부분이 많았고, 대단한 프로젝트는 아니지만 결국 해결하고 이렇게 문서화를 작성하고 있다는 사실에 큰 의미를 두고 싶습니다. 이 과정을 통해 '일단 시작이 반이다'라는 말이 결코 틀리지 않음을 깨달았고, 다양한 참고 자료의 존재를 알게 되었습니다. 비교적 쉽게 문제를 해결할 수 있었던 지금의 저는 새로운 길을 개척했던 선배 개발자들의 노력에 깊은 존경심을 느낍니다. 항상 부족함을 느끼며 겸손하게 지식을 습득하고, 어려움을 겪고 있는 다른 개발자들에게 도움을 주는 개발자가 되고자 합니다.
 
