@@ -75,7 +75,7 @@ blog	|'blog/'					|PostList.as_view()		|blog/post_list.html		|게시판 메인 �
 blog	|'blog/int:pk/'					|PostDetail.as_view()		|blog/post_detail.html		|상세 포스트 화면|
 blog	|'blog/category/str:slug/'			|category_page			|blog/post_list.html	        |카테고리별 포스트 보기|
 blog	|'blog/tag/str:slug/'				|tag_page			|blog/post_list.html		|태그별 포스트 보기|
-blog	|'blog/create_post/'				|PostCreate.as_view()		|blog/post_form.html		|포스트 작성, 카테고리 지정, 태그 지정, 사진 업로드, 파일 업로드, 다운로드|
+blog	|'blog/create_post/'				|PostCreate.as_view()		|blog/post_form.html		|포스트 작성|
 blog	|'blog/update_post/int:pk/'			|PostUpdate.as_view()		|blog/post_update_form.html	|포스트 수정|
 blog	|'blog/delete_post/int:pk/'			|PostDelete.as_view()		|blog/post_list.html   	        |포스트 삭제|
 blog	|'blog/search/str:q/'				|PostSearch.as_view()		|blog/post_list.html		|검색 기능|
