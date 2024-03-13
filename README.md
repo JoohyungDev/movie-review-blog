@@ -400,23 +400,23 @@ gantt
         </tr>
         <tr>
             <td>로그인</td>
-            <td>회원가입</td>
+            <td>구글 로그인</td>
         </tr>
         <tr>
             <td>
                 <img src="samples/product/로그인.png" width="100%">
             </td>
             <td>
-                <img src="samples/product/회원가입.png" width="100%">
+                <img src="samples/product/구글 로그인.png" width="100%">
             </td>
         </tr>
 	 <tr>
-            <td>비밀번호 찾기</td>
+            <td>회원가입</td>
             <td>비밀번호 수정</td>
         </tr>
         <tr>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/회원가입.png" width="100%">
             </td>
 	    <td>
                 <img src="samples/product/비밀번호 찾기.png" width="100%">
