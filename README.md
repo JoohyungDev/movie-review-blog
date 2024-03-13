@@ -68,93 +68,26 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 
 #### Blog 앱
 
-<table width: 100%; border-collapse: collapse;>
-  <tr>
-    <th>앱</th>
-    <th>URL</th>
-    <th>뷰 함수</th>
-    <th>HTML 파일 이름</th>
-    <th>노트</th>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/'</td>
-    <td>PostList.as_view()</td>
-    <td>blog/post_list.html</td>
-    <td>메인페이지</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/int:pk/'</td>
-    <td>PostDetail.as_view()</td>
-    <td>blog/post_detail.html</td>
-    <td>상세페이지</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/category/str:slug/'</td>
-    <td>category_page</td>
-    <td>blog/post_list.html</td>
-    <td>카테고리페이지</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/tag/str:slug/'</td>
-    <td>tag_page</td>
-    <td>blog/post_list.html</td>
-    <td>태그페이지</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/create_post/'</td>
-    <td>PostCreate.as_view()</td>
-    <td>blog/post_form.html</td>
-    <td>게시글 작성</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/update_post/int:pk/'</td>
-    <td>PostUpdate.as_view()</td>
-    <td>blog/post_update_form.html</td>
-    <td>게시글 수정</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/delete_post/int:pk/'</td>
-    <td>PostDelete.as_view()</td>
-    <td>blog/post_list.html</td>
-    <td>게시글 삭제</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/search/str:q/'</td>
-    <td>PostSearch.as_view()</td>
-    <td>blog/post_list.html</td>
-    <td>검색</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/int:pk/create_comment/'</td>
-    <td>create_comment</td>
-    <td>blog/post_detail.html</td>
-    <td>댓글 작성</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/update_comment/int:pk/'</td>
-    <td>CommentUpdate.as_view()</td>
-    <td>blog/comment_form.html</td>
-    <td>댓글 수정</td>
-  </tr>
-  <tr>
-    <td>blog</td>
-    <td>'blog/delete_comment/int:pk/'</td>
-    <td>delete_comment</td>
-    <td>blog/post_detail.html</td>
-    <td>댓글 삭제</td>
-  </tr>
-</table>
 
+| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
+|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
+|blog	|'blog/'				|PostList.as_view()		|blog/post_list.html		|게시판 메인 화면|
+|blog	|'blog/int:pk/'				|PostDetail.as_view()		|blog/post_detail.html		|상세 포스트 화면|
+|blog	|'blog/category/str:slug/'		|category_page			|blog/post_list.html	        |카테고리별 포스트 보기|
+|blog	|'blog/tag/str:slug/'			|tag_page			|blog/post_list.html		|태그별 포스트 보기|
+|blog	|'blog/create_post/'			|PostCreate.as_view()		|blog/post_form.html		|포스트 작성|
+|blog	|'blog/update_post/int:pk/'		|PostUpdate.as_view()		|blog/post_update_form.html	|포스트 수정|
+|blog	|'blog/delete_post/int:pk/'		|PostDelete.as_view()		|blog/post_list.html   	        |포스트 삭제|
+|blog	|'blog/search/str:q/'			|PostSearch.as_view()		|blog/post_list.html		|검색 기능|
+|blog	|'blog/int:pk/create_comment/'		|create_comment			|blog/post_detail.html		|댓글 입력 폼|
+|blog	|'blog/update_comment/int:pk/'		|CommentUpdate.as_view()	|blog/comment_form.html		|댓글 업데이트|
+|blog	|'blog/delete_comment/int:pk/'		|delete_comment 		|blog/post_detail.html          |댓글 삭제|
+|blog	|'blog/create_recomment/int:pk/'	|create_recomment		|blog/post_detail.html 	        |대댓글 입력 폼 |
+|blog	|'blog/update_recomment/int:pk/'	|ReCommentUpdate.as_view()	|blog/recomment_form.html 	|대댓글 업데이트|
+|blog	|'blog/delete_recomment/int:pk/'	|delete_recomment 		|blog/post_detail.html          |대댓글 삭제|
+|blog	|'blog/profile/int:pk/'			|profile			|blog/profile.html		|프로필 보기|
+|blog	|'blog/update_profile/int:pk/'		|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
+|blog	|'blog/change_password/'		|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
 
 ## 3. 기능 명세
 ```mermaid
