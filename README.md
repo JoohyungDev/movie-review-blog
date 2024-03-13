@@ -371,7 +371,7 @@ gantt
                 <img src="samples/product/세부 페이지.png" width="100%">
             </td>
             <td>
-                <img src="카테고리 조회.png" width="100%">
+                <img src="samples/product/카테고리 조회.png" width="100%">
             </td>
         </tr>
         <tr>
