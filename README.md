@@ -354,51 +354,72 @@ gantt
 ## 6. 데이터베이스 모델링(ERD)
 ```mermaid
 erDiagram
-    user ||--o{ post : write
-    user {
-      integer id PK
-      varchar username
-      varchar password
-      image profile_image
-      datetime created_at
-      varchar ip_address
-      datetime last_login
+    Category {
+        int id PK
+        string name
+        string slug
     }
-    post }|--|{ tag : contains
-    post ||--o| category : has
-    post {
-      integer id PK
-      varchar title
-      text content
-      file file_upload
-      image image_upload
-      datetime created_at
-      datetime updated_at
-      varchar writer
-      integer user_id FK
-      integer hits
-      integer tags FK
-      varchar category FK
+    Tag {
+        int id PK
+        string name
+        string slug
     }
-    post ||--o{ comment : contains
-    comment ||--o{ comment : contains
-    comment {
-      integer id PK
-      integer parent FK
-      text comment
-      comment comment_reply FK
-      datetime created_at
-      datetime updated_at
+    Post {
+        int id PK
+        string title
+        string hook_text
+        string content
+        string thumbnail_image
+        string file_upload
+        datetime created_at
+        datetime updated_at
+        int author_id FK
+        int category_id FK
+        int view_count
     }
-    
-    tag {
-      integer id PK
-      varchar name
+    User {
+        int id PK
     }
-    
-    
-    category {
-      integer id PK
-      varchar name
+    Comment {
+        int id PK
+        int post_id FK
+        int author_id FK
+        string content
+        datetime created_at
+        datetime updated_at
     }
+    Profile {
+        int user_id FK
+        string nickname
+        string profile_photo
+    }
+    Photo {
+        int id PK
+        string image
+        int user_id FK
+        string content
+        datetime created_at
+        datetime updated_at
+        boolean is_public
+    }
+    ReComment {
+        int id PK
+        int comment_id FK
+        int author_id FK
+        string content
+        datetime created_at
+        datetime updated_at
+    }
+
+    User ||--o{ Post : "writes"
+    User ||--o{ Comment : "writes"
+    User ||--o{ Profile : "has"
+    User ||--o{ Photo : "uploads"
+    User ||--o{ ReComment : "writes"
+    Post ||--o{ Comment : "has"
+    Comment ||--o{ ReComment : "has"
+    Post }|--|| Category : "categorized under"
+    Post }|--o{ Tag : "tagged with"
+    Post ||--o{ Photo : "includes"
+
 ```
