@@ -441,9 +441,43 @@ gantt
 ![ERD](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/86d96a27-c9a7-4426-a535-ba372265b4d9)
 
 ## 7. 트러블슈팅
+### 7.1 관리자 화면 레이아웃 오류
+관리자 페이지의 기능들은 정상 작동하지만 레이아웃이 정상 출력되지 않는 오류가 발생하였다.
+![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/1a5f4c97-eeea-4399-9a87-fc20b53b58a6)
+![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/beff7897-153e-451c-a0b5-0fdc2576ea7b)
 
+조사 결과, 해결책은 2가지였다. 
+1. Django 버전 다운그레이드
+   - 5.0.3 -> 3.2.14로 낮춰서 해결이 가능하였다.
+2. 캐시 제거
+   - 관리자 화면에서 CTRL + SHIFT + R을 눌러 캐시를 제거하여 해결하였다.
 
+### 7.2 IntegrityError 오류
+```
+IntegrityError at /post/new/ NOT NULL constraint failed: blog_post.author_id
+```
 
+게시글 생성 view를 만들고 나서 해당 URL로 폼을 작성하고 저장을 하니 위와 같은 오류가 발생하였다. CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증하는 함수를 추가하여 author를 자동으로 추가하게끔 작성하여 해결하였다.
+```
+    def form_valid(self, form):
+        current_user = self.request.user
+        if current_user.is_authenticated:
+            form.instance.author = current_user
+            return super(PostCreate, self).form_valid(form)
+        else:
+            return redirect("/blog/")
+```
+
+### 7.3 UNIQUE constraint failed 오류
+```
+UNIQUE constraint failed: blog_tag.slug
+```
+게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생한다. 일반적인 경우에서는 일어나지 않을 오류이지만 본인과 같은 실수를 예방하고자 view에서 PostCreate 클래스의 form_valid라는 폼 유효성 함수 내부에 다음과 같은 코드를 추가하여 해결하였다.
+```
+tags_str = tags_str.strip("; ")
+```
+
+### 7.4 
 
 ## 8. 개발하며 느낀점
 
