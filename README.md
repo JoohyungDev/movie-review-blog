@@ -1,7 +1,11 @@
 ## 1. 목표와 기능
 ### 1.1 목표
-- Python과 Django Framework를 활용한 블로그 만들기
-- 최대한 배운 것을 녹여내기 
+- Python, Django Framework를 활용한 블로그 설계
+- 기획 및 구현, 배포까지 1사이클 경험
+- 모놀리식 아키텍쳐 설계
+- CBV(Class-Based View)
+- WBS, ERD 설계 경험
+- 문서 작성 경험
 ### 1.2 기능
 - 공통
   - 토글 - 회원가입 / 로그인 버튼
@@ -52,7 +56,7 @@
 - #### Config (main)
 | App       | URL                                        | Views Function    | HTML File Name                        | Note           |
 |-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-|admin      |	'/admin/'	| -	|-	|관리자 사이트|
+|admin      |	'/admin/'	| -	|-	|관리자 화면|
 |-	  |'/'	|RedirectView.as_view() |	-	|메인 화면 |
 |blog	|'/blog/'	|-	|-	|blog.urls 내의 URL 패턴 참조|
 |markdownx	|'/markdownx/'	|-	|-	| 본문 markdown 적용 |
@@ -82,12 +86,12 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 | App       | URL                                        | Views Function    | HTML File Name                        | Note           |
 |-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
 |blog	|'blog/'				|PostList.as_view()		|blog/post_list.html		|게시판 메인 화면|
-|blog	|'blog/int:pk/'				|PostDetail.as_view()		|blog/post_detail.html		|상세 포스트 화면|
-|blog	|'blog/category/str:slug/'		|category_page			|blog/post_list.html	        |카테고리별 포스트 보기|
-|blog	|'blog/tag/str:slug/'			|tag_page			|blog/post_list.html		|태그별 포스트 보기|
-|blog	|'blog/create_post/'			|PostCreate.as_view()		|blog/post_form.html		|포스트 작성|
-|blog	|'blog/update_post/int:pk/'		|PostUpdate.as_view()		|blog/post_update_form.html	|포스트 수정|
-|blog	|'blog/delete_post/int:pk/'		|PostDelete.as_view()		|blog/post_list.html   	        |포스트 삭제|
+|blog	|'blog/int:pk/'				|PostDetail.as_view()		|blog/post_detail.html		|상세 게시글 화면|
+|blog	|'blog/category/str:slug/'		|category_page			|blog/post_list.html	        |카테고리별 게시글 보기|
+|blog	|'blog/tag/str:slug/'			|tag_page			|blog/post_list.html		|태그별 게시글 보기|
+|blog	|'blog/create_post/'			|PostCreate.as_view()		|blog/post_form.html		|게시글 작성|
+|blog	|'blog/update_post/int:pk/'		|PostUpdate.as_view()		|blog/post_update_form.html	|게시글 수정|
+|blog	|'blog/delete_post/int:pk/'		|PostDelete.as_view()		|blog/post_list.html   	        |게시글 삭제|
 |blog	|'blog/search/str:q/'			|PostSearch.as_view()		|blog/post_list.html		|검색 기능|
 |blog	|'blog/int:pk/create_comment/'		|create_comment			|blog/post_detail.html		|댓글 입력 폼|
 |blog	|'blog/update_comment/int:pk/'		|CommentUpdate.as_view()	|blog/comment_form.html		|댓글 업데이트|
@@ -101,72 +105,57 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 
 ## 3. 기능 명세
 ```mermaid
-graph TD;
-    subgraph accounts [Accounts 앱]
-        signup[회원가입]
-        login[로그인]
-        google_login[구글 로그인]
-        logout[로그아웃]
-    end
-
-    subgraph blog [Blog 앱]
-        profile[프로필]
-        postCRUD[게시물]
-        commentCRUD[댓글]
-    end
-
-    subgraph profileFeatures [프로필 조회 및 변경]
-        nicknameSetting[닉네임 변경]
-        nameSetting[이름 변경]
-        profilePhotoUpload[프로필 사진 업로드]
-	    thumbnailImageUpload[썸네일 사진 업로드]
-        passwordEdit[비밀번호 수정]
-    end
-
-    subgraph postFeatures [게시물 관련 기능]
-        createPost[게시글 추가]
-	    postList[게시글 목록]
-        searchPost[게시글 검색]
-        categorySelectAndView[카테고리 선택 및 조회]
-        tagSelectAndView[태그 선택 및 조회]
-    end
-
-    subgraph postDetail [게시글 상세보기]
-        deletePost[게시물 삭제]
-        editPost[게시물 수정]
-        uploadPhotoInPost[사진 업로드]
-        uploadFileInPost[파일 업로드]
-	downloadFile[파일 다운로드]
-        viewCountInPost[조회수]
-	author[작성자]
-	createdAt[작성 시간]
-	updatedAt[수정 시간]
-        tagAddInPost[태그 추가]
-        categoryAddInPost[카테고리 추가]
-    end
-
-    subgraph commentFeatures [댓글 관련 기능]
-        addComment[댓글 추가]
-        deleteComment[댓글 삭제]
-        addReply[대댓글]
-        editComment[댓글 수정]
-    end
-
-    login --> profile;
-    profile --> profileFeatures;
-    login --> postCRUD;
-    login --> commentCRUD;
-    postCRUD --> postFeatures;
-    postFeatures --> postDetail;
-    commentCRUD --> commentFeatures;
-
-    classDef app fill:#f9f,stroke:#333,stroke-width:2px;
-    class accounts,blog,profileFeatures,postFeatures,commentFeatures,postDetail app;
-
-
-
-
+graph TD
+subgraph 비로그인
+    A[메인 화면] --> B[게시글 목록];
+    A --> C[게시글 검색];
+    A --> D[카테고리별 게시글 목록];
+    B --> E[게시글 세부 내용 조회];
+    C --> E;
+    D --> E;
+end;
 ```
+
+```mermaid
+graph TD
+subgraph login ["로그인 방식"]
+    A1[일반 로그인] --> A[메인 화면]
+    A2[구글 로그인] --> A
+end
+
+A --> F[프로필 화면]
+A --> G[게시물 작성]
+
+subgraph profile ["프로필"]
+    F --> H[프로필 정보 수정]
+    F --> I[비밀번호 변경]
+end
+
+subgraph post_content ["게시물"]
+    G --> J[제목]
+    G --> K[훅]
+    G --> L[본문]
+    G --> M[이미지]
+    G --> N[카테고리]
+    G --> O[태그]
+end
+```
+
+```mermaid
+graph TD
+subgraph 로그인
+    A[상세 화면] -->|본인 확인| B[게시글 수정/삭제 가능]
+    A --> C[댓글 작성]
+    C -->|본인 확인| D[댓글 수정/삭제 가능]
+    C --> E[대댓글 작성]
+    E -->|본인 확인| F[대댓글 수정/삭제 가능]
+    A -->|공통| G[본문 조회]
+    A -->|공통| H[댓글 조회]
+    A -->|공통| I[태그 게시물 조회]
+    A -->|공통| J[파일 다운로드]
+end;
+```
+    
 ## 4. 프로젝트 구조와 개발 일정
 ### 4.1 프로젝트 구조
 ```
@@ -272,8 +261,8 @@ gantt
 <table>
     <tbody>
         <tr>
-            <td>메인</td>
-            <td>세부페이지</td>
+            <td>메인 화면</td>
+            <td>상세 게시글 화면</td>
         </tr>
         <tr>
             <td>
@@ -374,7 +363,7 @@ gantt
             </td>
         </tr>
         <tr>
-            <td>세부페이지</td>
+            <td>상세 게시물</td>
             <td>카테고리 조회</td>	
         </tr>
         <tr>
