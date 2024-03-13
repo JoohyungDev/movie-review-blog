@@ -1,4 +1,3 @@
-# 취미 블로그
 ## 1. 목표와 기능
 ### 1.1 목표
 - 다양한 기능 구현
@@ -68,27 +67,26 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 
 #### Blog 앱
 
-  
+
 | App       | URL                                        | Views Function    | HTML File Name                        | Note           |
 |-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-blog	|'blog/'					|PostList.as_view()		|blog/post_list.html		|게시판 메인 화면|
-blog	|'blog/int:pk/'					|PostDetail.as_view()		|blog/post_detail.html		|상세 포스트 화면|
-blog	|'blog/category/str:slug/'			|category_page			|blog/post_list.html	        |카테고리별 포스트 보기|
-blog	|'blog/tag/str:slug/'				|tag_page			|blog/post_list.html		|태그별 포스트 보기|
-blog	|'blog/create_post/'				|PostCreate.as_view()		|blog/post_form.html		|포스트 작성|
-blog	|'blog/update_post/int:pk/'			|PostUpdate.as_view()		|blog/post_update_form.html	|포스트 수정|
-blog	|'blog/delete_post/int:pk/'			|PostDelete.as_view()		|blog/post_list.html   	        |포스트 삭제|
-blog	|'blog/search/str:q/'				|PostSearch.as_view()		|blog/post_list.html		|검색 기능|
-blog	|'blog/int:pk/create_comment/'			|create_comment			|blog/post_detail.html		|댓글 입력 폼|
-blog	|'blog/update_comment/int:pk/'			|CommentUpdate.as_view()	|blog/comment_form.html		|댓글 업데이트|
-blog	|'blog/delete_comment/int:pk/'			|delete_comment 		|blog/post_detail.html          |댓글 삭제|
-blog	|'blog/create_recomment/int:pk/'		|create_recomment		|blog/post_detail.html 	        |대댓글 입력 폼 |
-blog	|'blog/update_recomment/int:pk/'		|ReCommentUpdate.as_view()	|blog/recomment_form.html 	|대댓글 업데이트|
-blog	|'blog/delete_recomment/int:pk/'		|delete_recomment 		|blog/post_detail.html          |대댓글 삭제|
-blog	|'blog/profile/int:pk/'				|profile			|blog/profile.html		|프로필 보기|
-blog	|'blog/update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
-blog	|'blog/change_password/'			|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
-
+|blog	|'blog/'				|PostList.as_view()		|blog/post_list.html		|게시판 메인 화면|
+|blog	|'blog/int:pk/'				|PostDetail.as_view()		|blog/post_detail.html		|상세 포스트 화면|
+|blog	|'blog/category/str:slug/'		|category_page			|blog/post_list.html	        |카테고리별 포스트 보기|
+|blog	|'blog/tag/str:slug/'			|tag_page			|blog/post_list.html		|태그별 포스트 보기|
+|blog	|'blog/create_post/'			|PostCreate.as_view()		|blog/post_form.html		|포스트 작성|
+|blog	|'blog/update_post/int:pk/'		|PostUpdate.as_view()		|blog/post_update_form.html	|포스트 수정|
+|blog	|'blog/delete_post/int:pk/'		|PostDelete.as_view()		|blog/post_list.html   	        |포스트 삭제|
+|blog	|'blog/search/str:q/'			|PostSearch.as_view()		|blog/post_list.html		|검색 기능|
+|blog	|'blog/int:pk/create_comment/'		|create_comment			|blog/post_detail.html		|댓글 입력 폼|
+|blog	|'blog/update_comment/int:pk/'		|CommentUpdate.as_view()	|blog/comment_form.html		|댓글 업데이트|
+|blog	|'blog/delete_comment/int:pk/'		|delete_comment 		|blog/post_detail.html          |댓글 삭제|
+|blog	|'blog/create_recomment/int:pk/'	|create_recomment		|blog/post_detail.html 	        |대댓글 입력 폼 |
+|blog	|'blog/update_recomment/int:pk/'	|ReCommentUpdate.as_view()	|blog/recomment_form.html 	|대댓글 업데이트|
+|blog	|'blog/delete_recomment/int:pk/'	|delete_recomment 		|blog/post_detail.html          |대댓글 삭제|
+|blog	|'blog/profile/int:pk/'			|profile			|blog/profile.html		|프로필 보기|
+|blog	|'blog/update_profile/int:pk/'		|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
+|blog	|'blog/change_password/'		|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
 
 ## 3. 기능 명세
 ```mermaid
@@ -268,10 +266,10 @@ gantt
         </tr>
         <tr>
             <td>
-		<img src="samples/01_메인페이지.png" width="100%">
+		<img src="samples/wireframe/01_메인페이지.png" width="100%">
             </td>
             <td>
-                <img src="samples/02_세부페이지.png" width="100%">
+                <img src="samples/wireframe/02_세부페이지.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -280,10 +278,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/03_카테고리 조회.png" width="100%">
+                <img src="samples/wireframe/03_카테고리 조회.png" width="100%">
             </td>
             <td>
-                <img src="samples/04_태그 조회.png" width="100%">
+                <img src="samples/wireframe/04_태그 조회.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -292,10 +290,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/05_포스트 작성.png" width="100%">
+                <img src="samples/wireframe/05_포스트 작성.png" width="100%">
             </td>
             <td>
-                <img src="samples/06_포스트 수정.png" width="100%">
+                <img src="samples/wireframe/06_포스트 수정.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -304,10 +302,10 @@ gantt
         </tr>
         <tr>
             <td>
-	        <img src="samples/07_댓글.png" width="100%">
+	        <img src="samples/wireframe/07_댓글.png" width="100%">
             </td>
             <td>
-                <img src="samples/08_로그인.png" width="100%">
+                <img src="samples/wireframe/08_로그인.png" width="100%">
             </td>
         </tr>
         <tr>
@@ -316,10 +314,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/09_회원가입.png" width="100%">
+                <img src="samples/wireframe/09_회원가입.png" width="100%">
             </td>
 	    <td>
-                <img src="samples/10_아이디찾기.png" width="100%">
+                <img src="samples/wireframe/10_아이디찾기.png" width="100%">
             </td>
         </tr>
 	<tr>
@@ -328,10 +326,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/11_비밀번호찾기.png" width="100%">
+                <img src="samples/wireframe/11_비밀번호찾기.png" width="100%">
             </td>
 	    <td>
-                <img src="samples/12_비밀번호 변경.png" width="100%">
+                <img src="samples/wireframe/12_비밀번호 변경.png" width="100%">
             </td>
         </tr>
  	<tr>
@@ -340,10 +338,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="samples/13_프로필.png" width="100%">
+                <img src="samples/wireframe/13_프로필.png" width="100%">
             </td>
 	    <td>
-                <img src="samples/14_프로필 수정.png" width="100%">
+                <img src="samples/wireframe/14_프로필 수정.png" width="100%">
             </td>
         </tr>
     </tbody>
@@ -353,75 +351,63 @@ gantt
 <table>
     <tbody>
         <tr>
-            <td>메인</td>
+            <td>메인상단</td>
+            <td>메인하단</td>
+        </tr>
+        <tr>
+            <td>
+		<img src="samples/product/메인상단.png" width="100%">
+            </td>
+            <td>
+                <img src="samples/product/메인하단.png" width="100%">
+            </td>
+        </tr>
+        <tr>
             <td>세부페이지</td>
+            <td>카테고리 조회</td>	
         </tr>
         <tr>
             <td>
-		<img src="#" width="100%">
+                <img src="samples/product/세부 페이지.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
+                <img src="카테고리 조회.png" width="100%">
             </td>
         </tr>
         <tr>
-            <td>카테고리 조회</td>
-            <td>태그 조회</td>	
+            <td>태그 조회</td>
+            <td>게시글 작성</td>
         </tr>
         <tr>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/태그 조회.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/게시글 작성.png" width="100%">
             </td>
         </tr>
         <tr>
-            <td>포스트 작성</td>
-            <td>포스트 수정</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="#" width="100%">
-            </td>
-            <td>
-                <img src="#" width="100%">
-            </td>
-        </tr>
-        <tr>
+           <td>게시글 수정</td>
            <td>댓글</td>
-           <td>로그인</td>
         </tr>
         <tr>
             <td>
-	        <img src="#" width="100%">
+	        <img src="samples/product/게시글 수정.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/댓글.png" width="100%">
             </td>
         </tr>
         <tr>
+            <td>로그인</td>
             <td>회원가입</td>
-            <td>아이디찾기</td>
         </tr>
         <tr>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/로그인.png" width="100%">
             </td>
             <td>
-                <img src="#" width="100%">
-            </td>
-        </tr>
-	<tr>
-            <td>비밀번호찾기</td>
-            <td>비밀번호 변경</td>
-        </tr>
-        <tr>
-            <td>
-                <img src="#" width="100%">
-            </td>
-	    <td>
-                <img src="#" width="100%">
+                <img src="samples/product/회원가입.png" width="100%">
             </td>
         </tr>
  	<tr>
@@ -430,10 +416,10 @@ gantt
         </tr>
         <tr>
             <td>
-                <img src="#" width="100%">
+                <img src="samples/product/프로필.png" width="100%">
             </td>
 	    <td>
-                <img src="#" width="100%">
+                <img src="samples/product/프로필 수정.png" width="100%">
             </td>
         </tr>
     </tbody>
