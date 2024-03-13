@@ -70,9 +70,9 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 
 
 | App       | URL                                        | Views Function               | HTML File Name            |  Note           |
-|-----------|--------------------------------------------|------------------------------|-------------------------------| ---------------- |
-| blog	    | 'blog/'				         | PostList.as_view()		| blog/post_list.html		| 메인페이지      |
-| blog	    | 'blog/int:pk/'			         | PostDetail.as_view()		| blog/post_detail.html		| 상세페이지      |
+|-----------|--------------------------------------------|------------------------------|-------------------------------|----------------|
+| blog	    | 'blog/'				         | PostList.as_view()		| blog/post_list.html		| 메인페이지|
+| blog	    | 'blog/int:pk/'			         | PostDetail.as_view()		| blog/post_detail.html		|상세페이지|
 | blog	    | 'blog/category/str:slug/'		         | category_page		| blog/post_list.html	        | 카테고리페이지  |
 | blog 	    | 'blog/tag/str:slug/'			 | tag_page			| blog/post_list.html		| 태그페이지      |
 | blog	    | 'blog/create_post/'			 | PostCreate.as_view()		| blog/post_form.html		| 게시글 작성     |
