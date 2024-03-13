@@ -73,20 +73,21 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 |-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
 blog	|'blog/'					|PostList.as_view()		|blog/post_list.html		|게시판 메인 화면|
 blog	|'blog/int:pk/'					|PostDetail.as_view()		|blog/post_detail.html		|상세 포스트 화면|
-blog	|'blog/category/str:slug/'			|category_page			|blog/category_page.html	|카테고리별 포스트 보기|
-blog	|'blog/tag/str:slug/'				|tag_page			|blog/tag_page.html		|태그별 포스트 보기|
-blog	|'blog/create_post/'				|PostCreate.as_view()		|blog/post_form.html		|포스트 작성, 카테고리 지정, 사진 업로드|
-blog	|'blog/update_post/int:pk/'			|PostUpdate.as_view()		|blog/post_update.html		|포스트 수정|
-blog	|'blog/delete_post/int:pk/'			|PostDelete.as_view()		|blog/post_confirm_delete.html	|포스트 삭제|
-blog	|'blog/search/str:q/'				|PostSearch.as_view()		|blog/post_search.html		|검색 기능|
-blog	|'post/int:pk/new_comment/'			|new_comment			|blog/comment_form.html		|댓글 입력 폼|
-blog	|'post/update_comment/int:pk/'			|CommentUpdate.as_view()	|blog/comment_update.html	|댓글 업데이트|
-blog	|'post/delete_comment/int:pk/'			|delete_comment 		|blog/comment_confirm_delete.html|댓글 삭제|
-blog	|'create_recomment/int:pk/'			|create_recomment		|blog/recomment_form.html	|대댓글 입력 폼 |
-blog	|'change_password/'				|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
-blog	|'profile/int:pk/'				|profile			|blog/profile.html		|프로필 보기|
-blog	|'update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
-
+blog	|'blog/category/str:slug/'			|category_page			|blog/post_list.html	        |카테고리별 포스트 보기|
+blog	|'blog/tag/str:slug/'				|tag_page			|blog/post_list.html		|태그별 포스트 보기|
+blog	|'blog/create_post/'				|PostCreate.as_view()		|blog/post_form.html		|포스트 작성|
+blog	|'blog/update_post/int:pk/'			|PostUpdate.as_view()		|blog/post_update_form.html	|포스트 수정|
+blog	|'blog/delete_post/int:pk/'			|PostDelete.as_view()		|blog/post_list.html   	        |포스트 삭제|
+blog	|'blog/search/str:q/'				|PostSearch.as_view()		|blog/post_list.html		|검색 기능|
+blog	|'blog/int:pk/create_comment/'			|create_comment			|blog/post_detail.html		|댓글 입력 폼|
+blog	|'blog/update_comment/int:pk/'			|CommentUpdate.as_view()	|blog/comment_form.html		|댓글 업데이트|
+blog	|'blog/delete_comment/int:pk/'			|delete_comment 		|blog/post_detail.html          |댓글 삭제|
+blog	|'blog/create_recomment/int:pk/'		|create_recomment		|blog/post_detail.html 	        |대댓글 입력 폼 |
+blog	|'blog/update_recomment/int:pk/'		|ReCommentUpdate.as_view()	|blog/recomment_form.html 	|대댓글 업데이트|
+blog	|'blog/delete_recomment/int:pk/'		|delete_recomment 		|blog/post_detail.html          |대댓글 삭제|
+blog	|'blog/profile/int:pk/'				|profile			|blog/profile.html		|프로필 보기|
+blog	|'blog/update_profile/int:pk/'			|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
+blog	|'blog/change_password/'			|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
 
 
 ## 3. 요구사항 명세와 기능 명세
@@ -185,7 +186,8 @@ graph TD;
  ┃ ┃ ┃ ┣ 📜post_list.html
  ┃ ┃ ┃ ┣ 📜post_update_form.html
  ┃ ┃ ┃ ┣ 📜profile.html
- ┃ ┃ ┃ ┗ 📜profile_update.html
+ ┃ ┃ ┃ ┣ 📜profile_update.html
+ ┃ ┃ ┃ ┗ 📜recomment_form.html
  ┃ ┣ 📜admin.py
  ┃ ┣ 📜apps.py
  ┃ ┣ 📜forms.py
