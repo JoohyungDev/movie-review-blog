@@ -1,4 +1,3 @@
-<img width="625" alt="image" src="https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/3f916c6a-ad05-465f-a67e-0624947187b2"><img width="1280" alt="image" src="https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/6675de99-d36c-4e18-b606-7fbfcf95ff15"># 취미 블로그
 ## 1. 목표와 기능
 ### 1.1 목표
 - 다양한 기능 구현
