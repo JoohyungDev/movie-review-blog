@@ -186,7 +186,8 @@ graph TD;
  ┃ ┃ ┃ ┣ 📜post_list.html
  ┃ ┃ ┃ ┣ 📜post_update_form.html
  ┃ ┃ ┃ ┣ 📜profile.html
- ┃ ┃ ┃ ┗ 📜profile_update.html
+ ┃ ┃ ┃ ┣ 📜profile_update.html
+ ┃ ┃ ┃ ┗ 📜recomment_form.html
  ┃ ┣ 📜admin.py
  ┃ ┣ 📜apps.py
  ┃ ┣ 📜forms.py
