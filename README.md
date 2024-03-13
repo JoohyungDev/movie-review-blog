@@ -70,23 +70,23 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 
 | App  | URL                             | Views Function          | HTML File Name            |  Note          |
 |------|---------------------------------|-------------------------|---------------------------|----------------|
-| blog | 'blog/'		         | PostList.as_view()	   | blog/post_list.html       | 메인페이지      |
-| blog | 'blog/int:pk/'			 | PostDetail.as_view()    | blog/post_detail.html     | 상세페이지      |
-| blog | 'blog/category/str:slug/'       | category_page	   | blog/post_list.html       | 카테고리페이지  |
-| blog | 'blog/tag/str:slug/'		 | tag_page	           | blog/post_list.html       | 태그페이지      |
-| blog | 'blog/create_post/'		 | PostCreate.as_view()	   | blog/post_form.html        | 게시글 작성    |
-| blog | 'blog/update_post/int:pk/'	 | PostUpdate.as_view()	   | blog/post_update_form.html	| 게시글 수정    |
-| blog | 'blog/delete_post/int:pk/'	 | PostDelete.as_view()    | blog/post_list.html   	| 게시글 삭제    |
-| blog | 'blog/search/str:q/'		 | PostSearch.as_view()	   | blog/post_list.html	| 검색           |
-| blog | 'blog/int:pk/create_comment/'	 | create_comment	   | blog/post_detail.html	| 댓글 작성      |
-| blog | 'blog/update_comment/int:pk/'	 | CommentUpdate.as_view() | blog/comment_form.html	| 댓글 수정      |
-| blog | 'blog/delete_comment/int:pk/'	 | delete_comment 	   | blog/post_detail.html      | 댓글 삭제      |
-| blog | 'blog/create_recomment/int:pk/' | create_recomment	   | blog/post_detail.html 	| 대댓글 작성    |
-| blog | 'blog/update_recomment/int:pk/' | ReCommentUpdate.as_view() | blog/recomment_form.html | 대댓글 수정    |
-| blog | 'blog/delete_recomment/int:pk/' | delete_recomment 	   | blog/post_detail.html      | 대댓글 삭제    |
-| blog | 'blog/profile/int:pk/'		 | profile		   | blog/profile.html		| 프로필         |
-| blog | 'blog/update_profile/int:pk/'   | ProfileUpdate.as_view() | blog/profile_update.html	| 프로필 수정    |
-| blog | 'blog/change_password/'         | ChangePassword.as_view() | blog/change_password.html	| 비밀번호 변경  |
+| blog | 'blog/'		         | PostList.as_view()	   | blog/post_list.html       | 메인페이지    &nbsp;  |
+| blog | 'blog/int:pk/'			 | PostDetail.as_view()    | blog/post_detail.html     | 상세페이지    &nbsp;  |
+| blog | 'blog/category/str:slug/'       | category_page	   | blog/post_list.html       | 카테고리페이지 &nbsp; |
+| blog | 'blog/tag/str:slug/'		 | tag_page	           | blog/post_list.html       | 태그페이지     &nbsp; |
+| blog | 'blog/create_post/'		 | PostCreate.as_view()	   | blog/post_form.html        | 게시글 작성   &nbsp; |
+| blog | 'blog/update_post/int:pk/'	 | PostUpdate.as_view()	   | blog/post_update_form.html	| 게시글 수정   &nbsp; |
+| blog | 'blog/delete_post/int:pk/'	 | PostDelete.as_view()    | blog/post_list.html   	| 게시글 삭제   &nbsp; |
+| blog | 'blog/search/str:q/'		 | PostSearch.as_view()	   | blog/post_list.html	| 검색          &nbsp; |
+| blog | 'blog/int:pk/create_comment/'	 | create_comment	   | blog/post_detail.html	| 댓글 작성     &nbsp; |
+| blog | 'blog/update_comment/int:pk/'	 | CommentUpdate.as_view() | blog/comment_form.html	| 댓글 수정     &nbsp; |
+| blog | 'blog/delete_comment/int:pk/'	 | delete_comment 	   | blog/post_detail.html      | 댓글 삭제     &nbsp; |
+| blog | 'blog/create_recomment/int:pk/' | create_recomment	   | blog/post_detail.html 	| 대댓글 작성   &nbsp; |
+| blog | 'blog/update_recomment/int:pk/' | ReCommentUpdate.as_view() | blog/recomment_form.html | 대댓글 수정   &nbsp; |
+| blog | 'blog/delete_recomment/int:pk/' | delete_recomment 	   | blog/post_detail.html      | 대댓글 삭제   &nbsp; |
+| blog | 'blog/profile/int:pk/'		 | profile		   | blog/profile.html		| 프로필        &nbsp; |
+| blog | 'blog/update_profile/int:pk/'   | ProfileUpdate.as_view() | blog/profile_update.html	| 프로필 수정   &nbsp; |
+| blog | 'blog/change_password/'         | ChangePassword.as_view() | blog/change_password.html	| 비밀번호 변경 &nbsp; |
 
 
 ## 3. 기능 명세
