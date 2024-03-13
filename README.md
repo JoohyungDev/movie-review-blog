@@ -440,7 +440,7 @@ gantt
 ## 6. 데이터베이스 모델링(ERD)
 ![ERD](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/86d96a27-c9a7-4426-a535-ba372265b4d9)
 
-## 7. 트러블슈팅
+## 7. 트러블슈팅 및 개선
 ### 7.1 관리자 화면 레이아웃 오류
 관리자 페이지의 기능들은 정상 작동하지만 레이아웃이 정상 출력되지 않는 오류가 발생하였다.
 ![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/1a5f4c97-eeea-4399-9a87-fc20b53b58a6)
@@ -472,12 +472,37 @@ IntegrityError at /post/new/ NOT NULL constraint failed: blog_post.author_id
 ```
 UNIQUE constraint failed: blog_tag.slug
 ```
-게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생한다. 일반적인 경우에서는 일어나지 않을 오류이지만 본인과 같은 실수를 예방하고자 view에서 PostCreate 클래스의 form_valid라는 폼 유효성 함수 내부에 다음과 같은 코드를 추가하여 해결하였다.
+게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생한다. 
+일반적인 경우에서는 일어나지 않을 오류이지만 본인과 같은 실수를 예방하고자 view에서 PostCreate 클래스의 form_valid라는 폼 유효성 함수 내부에 다음과 같은 코드를 추가하여 해결하였다.
 ```
 tags_str = tags_str.strip("; ")
 ```
 
-### 7.4 
+### 7.4 게시글 삭제 관련 로직 단순화
+![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/50668c85-b20e-4639-8265-eddf2aa380b9)
+기존 코드는 게시글 세부 화면에서 삭제를 누르면 다른 페이지로 이동하여 삭제를 진행하였는데 이 과정에서 불편함을 느꼈으며 다음과 같이 수정하였다. 
+```
+<form class="post-form d-inline" action="{% url 'post_delete' post.pk %}"
+method="post">
+    {% csrf_token %}
+    <a href="{% url 'post_delete' post.pk %}">
+    <input type="submit" value="확인" class="btn btn-primary">
+    </a>
+</form>
+```
+확인 버튼을 form 태그로 감싸고 post_delete라는 이름의 삭제 클래스 URL과 연결시켰다. 그 다음, views의 삭제 클래스 내부 get함수를 오버라이딩 하였다.
+```
+class PostDelete(DeleteView):
+    model = Post
+    success_url = reverse_lazy("post_list")
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+```
+결과적으로 삭제 버튼을 누르면 바로 삭제가 되어 지연 시간을 확실히 감소시켰다.
+
+
+
 
 ## 8. 개발하며 느낀점
 
