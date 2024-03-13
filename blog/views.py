@@ -93,7 +93,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
                     self.object.tags.add(tag)
             return response
         else:
-            return redirect(reverse("blog_main_page"))
+            return redirect(reverse("root"))
 
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
@@ -207,7 +207,7 @@ class PostSearch(PostList):
         return context
 
 
-def new_comment(request, pk):
+def create_comment(request, pk):
     if request.user.is_authenticated:
         post = get_object_or_404(Post, pk=pk)
 

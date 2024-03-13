@@ -101,7 +101,7 @@
                             <div class="card-body" id="comment-area" >
                                 {% if user.is_authenticated %}
                                 <!-- Comment form-->
-                                <form class="mb-4" id="comment-form" method="POST" action="{{ post.get_absolute_url }}new_comment/">
+                                <form class="mb-4" id="comment-form" method="POST" action="{{ post.get_absolute_url }}create_comment/">
                                     {% csrf_token %}
                                     {{ comment_form | crispy }}
                                 <button type="submit" class="btn btn-primary btn-sm float-end my-3">댓글 작성</button>
@@ -193,7 +193,7 @@
                                         </div>
                                         <!-- Child comment write -->
                                         <div class="ms-4 mt-3">
-                                            <form method="post" action="{% url 'create_recomment' post.pk %}" class="ms-5">
+                                            <form method="post" action="{% url 'recomment_create' post.pk %}" class="ms-5">
                                                 {% csrf_token %}
                                                 {% for recom_form in recomment_form %}
                                                     {% if recom_form.label != 'Comment' %}
