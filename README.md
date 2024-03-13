@@ -389,7 +389,7 @@ erDiagram
         datetime updated_at
     }
     Profile {
-        int user_id FK
+        int user_id PK,FK
         string nickname
         string profile_photo
     }
