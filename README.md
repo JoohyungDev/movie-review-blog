@@ -352,5 +352,5 @@ gantt
 ### 5.2 화면 설계
 
 ## 6. 데이터베이스 모델링(ERD)
-![ERD](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/b44fa854-e496-4a43-9f1b-047fbb22574b)
+![ERD](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/86d96a27-c9a7-4426-a535-ba372265b4d9)
 
