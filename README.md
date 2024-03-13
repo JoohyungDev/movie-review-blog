@@ -36,7 +36,7 @@
   - 서비스 배포 환경
     - Amazon Lightsail
 ### 2.2 배포 URL
-  - URL
+  - [URL](http://43.202.29.72:8000/blog/)
   - 관리자
     ```
     id : pjh
@@ -49,7 +49,18 @@
     ```
   - 구글 로그인 유저
 ### 2.3 URL 구조(모놀리식)
-#### Accounts 앱 (Django Allauth 사용)
+- #### Config (main)
+| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
+|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
+|admin      |	'/admin/'	| -	|-	|관리자 사이트|
+|-	  |'/'	|RedirectView.as_view() |	-	|메인 화면 |
+|blog	|'/blog/'	|-	|-	|blog.urls 내의 URL 패턴 참조|
+|markdownx	|'/markdownx/'	|-	|-	| 본문 markdown 적용 |
+|accounts	|'/accounts/'	|-	|-	| allauth |
+|-	|'/media/'	|-	|-	|미디어 파일 접근을 위한 URL|
+
+
+- #### Accounts (Django Allauth)
 
 accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통합된 앱입니다. 이 앱은 django-allauth 패키지를 사용하여 구현되었으며, 사용자 로그인, 로그아웃, 회원가입, 소셜 로그인 등의 기능을 제공합니다. 이를 통해 사용자 경험(UX)을 대폭 향상합니다.
 
@@ -65,7 +76,7 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 - 비밀번호 재설정: 비밀번호를 잊은 사용자는 이메일을 통해 비밀번호를 재설정할 수 있습니다.
 
 
-#### Blog 앱
+- #### Blog 
 
 
 | App       | URL                                        | Views Function    | HTML File Name                        | Note           |
@@ -441,6 +452,9 @@ gantt
 ![ERD](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/86d96a27-c9a7-4426-a535-ba372265b4d9)
 
 ## 7. 트러블슈팅
+
+
+
 
 ## 8. 개발하며 느낀점
 
