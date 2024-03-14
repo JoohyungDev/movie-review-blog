@@ -26,19 +26,4 @@ urlpatterns = [
         name="recomment_update",
     ),
     path("delete_recomment/<int:pk>/", views.delete_recomment, name="recomment_delete"),
-    path(
-        "profile/<int:pk>/",
-        views.profile,
-        name="profile",
-    ),
-    path(
-        "update_profile/<int:pk>/",
-        views.ProfileUpdate.as_view(),
-        name="profile_update",
-    ),
-    path(
-        "change_password/",
-        views.ChangePassword.as_view(),
-        name="password_change",
-    ),
 ]

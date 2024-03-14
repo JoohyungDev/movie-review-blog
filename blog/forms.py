@@ -1,6 +1,5 @@
-from .models import Comment, Profile, ReComment
+from .models import Comment, ReComment
 from django import forms
-from django.contrib.auth.models import User
 
 
 class CommentForm(forms.ModelForm):
@@ -13,17 +12,3 @@ class ReCommentForm(forms.ModelForm):
     class Meta:
         model = ReComment
         fields = ("content",)
-
-
-class UserForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ["first_name", "last_name"]
-
-
-class ProfileForm(forms.ModelForm):
-    profile_photo = forms.ImageField(required=False)
-
-    class Meta:
-        model = Profile
-        fields = ["nickname", "profile_photo"]
