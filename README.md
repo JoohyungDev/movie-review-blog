@@ -454,13 +454,13 @@ gantt
    - 관리자 화면에서 CTRL + SHIFT + R을 눌러 캐시를 제거하여 해결이 가능합니다.
 
 ### 7.2 IntegrityError 오류
-```
+```python
 IntegrityError at /post/new/ NOT NULL constraint failed: blog_post.author_id
 ```
 
 게시글 생성 view를 만들고 나서 해당 URL로 폼을 작성하고 저장을 하니 위와 같은 오류가 발생하였습니다. <br>
 CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증하는 함수를 추가하여 author를 자동으로 추가하게끔 작성하여 해결하였습니다.
-```
+```python
 def form_valid(self, form):
     current_user = self.request.user
     if current_user.is_authenticated:
@@ -471,19 +471,19 @@ def form_valid(self, form):
 ```
 
 ### 7.3 UNIQUE constraint failed 오류
-```
+```python
 UNIQUE constraint failed: blog_tag.slug
 ```
 게시글 작성 시 태그를 태그1; 태그2 로 작성하면 정상 반영되지만 태그1; 태그2; 처럼 마지막을 세미콜론(;)으로 끝내면 위와 같은 오류가 발생하였습니다. <br>
 일반적인 경우에서는 일어나지 않을 오류이지만 본인과 같은 실수를 예방하고자 view에서 PostCreate 클래스의 form_valid라는 폼 유효성 함수 내부에 다음과 같은 코드를 추가하여 해결하였습니다.
-```
+```python
 tags_str = tags_str.strip("; ")
 ```
 
 ### 7.4 게시글 삭제 관련 로직 단순화
 ![image](https://github.com/JoohyungDev/my-hobby-blog/assets/113663639/50668c85-b20e-4639-8265-eddf2aa380b9)
 기존 코드는 게시글 세부 화면에서 삭제를 누르면 다른 페이지로 이동하여 삭제를 진행하였는데 이 과정에서 불편함을 느꼈으며 다음과 같이 수정하였습니다. 
-```
+```html
 <form class="post-form d-inline" action="{% url 'post_delete' post.pk %}"
 method="post">
     {% csrf_token %}
@@ -493,7 +493,7 @@ method="post">
 </form>
 ```
 확인 버튼을 form 태그로 감싸고 post_delete라는 이름의 삭제 클래스 URL과 연결 시켰습니다. 그 다음, views의 삭제 클래스 내부 get함수를 오버라이딩 하였습니다.
-```
+```python
 class PostDelete(DeleteView):
     model = Post
     success_url = reverse_lazy("post_list")
@@ -504,14 +504,14 @@ class PostDelete(DeleteView):
 결과적으로 삭제 버튼을 누르는 즉시 삭제가 되며, 지연 시간을 50%이상 감소시켰습니다.
 
 ### 7.5 django-allauth 오류
-```
+```python
 allauth.account.middleware.AccountMiddleware must be added to settings.MIDDLEWARE
 ```
 django-allauth를 활용한 소셜미디어 로그인 기능을 사용하고자 하였으나 위와 같은 문제가 발생하였습니다. <br>
 settings.py 내부의 MIDDLEWARE 부분에 "allauth.account.middleware.AccountMiddleware"를 추가하여 간단히 해결하였습니다.
 
 ### 7.6 DB 오류
-```
+```python
 django.db.migrations.exceptions.InconsistentMigrationHistory: Migration socialaccount.0001_initial is applied before its dependency sites.0001_initial
 on database 'default'.
 ```
@@ -527,7 +527,7 @@ allauth를 활용한 소셜 로그인에는 sites를 admin페이지에서 수정
 5. python manage.py createsuperuser
 
 ### 7.7 WSGI 오류
-```
+```python
 'WSGIRequest' object has no attribute 'author'
 ```
 포스트 상세 페이지에 댓글 기능을 추가하던 중, 위와 같은 오류가 발생했습니다. <br>
