@@ -460,13 +460,13 @@ IntegrityError at /post/new/ NOT NULL constraint failed: blog_post.author_id
 게시글 생성 view를 만들고 나서 해당 URL로 폼을 작성하고 저장을 하니 위와 같은 오류가 발생하였습니다. <br>
 CBV로 선언한 PostCreate 클래스 내부에 form_valid라는 폼을 검증하는 함수를 추가하여 author를 자동으로 추가하게끔 작성하여 해결하였습니다.
 ```
-    def form_valid(self, form):
-        current_user = self.request.user
-        if current_user.is_authenticated:
-            form.instance.author = current_user
-            return super(PostCreate, self).form_valid(form)
-        else:
-            return redirect("/blog/")
+def form_valid(self, form):
+    current_user = self.request.user
+    if current_user.is_authenticated:
+        form.instance.author = current_user
+        return super(PostCreate, self).form_valid(form)
+    else:
+        return redirect("/blog/")
 ```
 
 ### 7.3 UNIQUE constraint failed 오류
