@@ -62,10 +62,17 @@
 |blog	|'/blog/'	|-	|-	|blog.urls 내의 URL 패턴 참조|
 |markdownx	|'/markdownx/'	|-	|-	| 본문 markdown 적용 |
 |accounts	|'/accounts/'	|-	|-	| allauth |
+|accounts	|'/accounts/'	|-	|-	| accounts.urls 내의 URL 패턴 참조 |
 |-	|'/media/'	|-	|-	|미디어 파일 접근을 위한 URL|
 
 
 - #### Accounts (Django Allauth)
+
+| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
+|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
+|accounts	|'accounts/profile/int:pk/'			|profile			|accounts/profile.html		|프로필 보기|
+|accounts	|'accounts/update_profile/int:pk/'		|ProfileUpdate.as_view()	|accounts/profile_update.html   |프로필 업데이트|
+|accounts	|'accounts/change_password/'		|ChangePassword.as_view()	|accounts/change_password.html	|비밀번호 변경|
 
 accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통합된 앱입니다. 이 앱은 django-allauth 패키지를 사용하여 구현되었으며, 사용자 로그인, 로그아웃, 회원가입, 소셜 로그인 등의 기능을 제공합니다. 이를 통해 사용자 경험(UX)을 대폭 향상합니다.
 
@@ -79,6 +86,7 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 - 계정 관리: 사용자는 비밀번호 변경, 이메일 주소 추가 및 변경 등의 계정 관리 기능을 사용할 수 있습니다. 
   
 - 비밀번호 재설정: 비밀번호를 잊은 사용자는 이메일을 통해 비밀번호를 재설정할 수 있습니다.
+
 
 
 - #### Blog 
@@ -100,9 +108,7 @@ accounts 앱은 사용자 인증 및 관리를 위해 Django 프로젝트에 통
 |blog	|'blog/create_recomment/int:pk/'	|create_recomment		|blog/post_detail.html 	        |대댓글 입력 폼 |
 |blog	|'blog/update_recomment/int:pk/'	|ReCommentUpdate.as_view()	|blog/recomment_form.html 	|대댓글 업데이트|
 |blog	|'blog/delete_recomment/int:pk/'	|delete_recomment 		|blog/post_detail.html          |대댓글 삭제|
-|blog	|'blog/profile/int:pk/'			|profile			|blog/profile.html		|프로필 보기|
-|blog	|'blog/update_profile/int:pk/'		|ProfileUpdate.as_view()	|blog/profile_update.html	|프로필 업데이트|
-|blog	|'blog/change_password/'		|ChangePassword.as_view()	|blog/change_password.html	|비밀번호 변경|
+
 
 ## 3. 기능 명세
 ```mermaid
@@ -162,6 +168,18 @@ end;
 ```
 📦my-hobby-blog
  ┣ 📂accounts
+ ┃ ┣ 📂templates
+ ┃ ┃ ┗ 📂accounts
+ ┃ ┃ ┃ ┣ 📜profile.html
+ ┃ ┃ ┃ ┗ 📜profile_update.html
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜forms.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜views.py
+ ┃ ┗ 📜__init__.py
  ┣ 📂blog
  ┃ ┣ 📂static
  ┃ ┃ ┗ 📂blog
@@ -184,8 +202,6 @@ end;
  ┃ ┃ ┃ ┣ 📜post_form.html
  ┃ ┃ ┃ ┣ 📜post_list.html
  ┃ ┃ ┃ ┣ 📜post_update_form.html
- ┃ ┃ ┃ ┣ 📜profile.html
- ┃ ┃ ┃ ┣ 📜profile_update.html
  ┃ ┃ ┃ ┗ 📜recomment_form.html
  ┃ ┣ 📜admin.py
  ┃ ┣ 📜apps.py
@@ -230,7 +246,6 @@ end;
  ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜자연이미지.jpg
  ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜햇빛이미지.jpg
  ┣ 📂templates
- ┃ ┣ 📂account
  ┃ ┣ 📂allauth
  ┣ 📜db.sqlite3
  ┣ 📜manage.py
